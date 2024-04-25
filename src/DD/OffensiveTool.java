@@ -1,11 +1,14 @@
 package DD;
 
-//enum ToolType {
-//    FIREBALL,
-//    STRIKE,
-//    SWORD,
-//    CLUB
-//}
+enum Arms {
+    SWORD,
+    CLUB
+}
+
+enum Spells {
+    FIREBALL,
+    LIGHTNING
+}
 
 enum OffensiveToolType {
     ARM,
@@ -15,9 +18,9 @@ enum OffensiveToolType {
 public class OffensiveTool {
     private final OffensiveToolType toolType;
     private final int attackLevel;
-    private final int name;
+    private final String name;
 
-    public OffensiveTool(OffensiveToolType toolType, int attackLevel, int name) {
+    public OffensiveTool(OffensiveToolType toolType, int attackLevel, String name) {
         this.toolType = toolType;
         this.attackLevel = attackLevel;
         this.name = name;
@@ -30,7 +33,7 @@ public class OffensiveTool {
     public int getAttackLevel() {
         return attackLevel;
     }
-    public int getName() {
+    public String getName() {
         return name;
     }
 

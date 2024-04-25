@@ -1,8 +1,8 @@
 package DD;
 
 
-enum PotionType {
-    POTION,
+enum Potions {
+    STDPOTION,
     BIGPOTION
 }
 
@@ -14,9 +14,9 @@ enum DefensiveToolType {
 public class DefensiveTool {
     private final DefensiveToolType toolType;
     private final int defenseLevel;
-    private final int name;
+    private final String name;
 
-    public DefensiveTool(DefensiveToolType toolType, int defenseLevel, int name) {
+    public DefensiveTool(DefensiveToolType toolType, int defenseLevel, String name) {
         this.toolType = toolType;
         this.defenseLevel = defenseLevel;
         this.name = name;
@@ -29,7 +29,7 @@ public class DefensiveTool {
     public int getDefenseLevel() {
         return defenseLevel;
     }
-    public int getName() {
+    public String getName() {
         return name;
     }
 
