@@ -13,6 +13,7 @@ public class Player {
     private int force;
     private DefensiveTool defensiveTool;
     private OffensiveTool offensiveTool;
+    private int position;
 
     // Constructors
 
@@ -30,6 +31,7 @@ public class Player {
             this.offensiveTool = new OffensiveTool(OffensiveToolType.SPELL, 5, "");
             this.defensiveTool = new DefensiveTool(DefensiveToolType.SHIELD, 5, "Bouclier");
         }
+        this.position = 1;
     }
 
     public Player(String name) {
@@ -55,6 +57,7 @@ public class Player {
     public int getForce() {
         return force;
     }
+    public int getPosition() { return position; }
 
     // Setters
     public void setName(String name) { this.name = name; }
@@ -65,14 +68,17 @@ public class Player {
     public void setForce(int force) {
         this.force = force;
     }
+    public void setPosition(int position) { this.position = position; }
 
     @Override
     public String toString() {
         return
                 "    Player :\n" +
-                "    │  name  = " + getName() + '\n' +
-                "    │  type  = " + getType() + '\n' +
-                "    │  life  = " + getLife() + '\n' +
-                "    │  force = " + getForce() + '\n' ;
+                "       >  name  = " + getName() + '\n' +
+                "       >  type  = " + getType() + '\n' +
+                "       >  life  = " + getLife() + '\n' +
+                "       >  force = " + getForce() + '\n' ;
     }
+
+
 }
