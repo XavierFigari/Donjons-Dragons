@@ -6,45 +6,87 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private String getPlayerName(Scanner sc) {
+    private final Scanner sc = new Scanner(System.in);
+
+    public void displayGameStart() {
+        System.out.println("\n########################################\n");
+        System.out.println("               Le jeu démarre !");
+        System.out.println("\n########################################\n");
+    }
+
+    public void displayTurnNumber(int n) {
+        Msg.blue("\n*** TOUR DE JEU " + n + " ***\n");
+    }
+
+    public void displayPlayerTurn(int playerIndex, int diceValue, int newPosition) {
+        Msg.green("Joueur " + playerIndex);
+        Msg.white("  Dé = " + diceValue);
+        Msg.white("  Nelle position = " + newPosition);
+    }
+
+    private String getPlayerName() {
         String textInput = "";
         System.out.print("- Nom ? ");
         return sc.nextLine();
     }
 
-    private PlayerType getPlayerType(Scanner sc) {
+    private PlayerType getPlayerType() {
         String textInput = "";
         System.out.print("- Guerrier (G) ou Magicien (M) ? ");
         while (!textInput.equals("G") && !textInput.equals("M")) {
             textInput = sc.nextLine();
             if (!textInput.equals("G") && !textInput.equals("M")) {
-                System.out.print("Entrez G ou M : ");;
+                System.out.println(Colors.colored(Colors.ANSI_RED, "Ce choix n'est pas autorisé\n"));
+                System.out.print("Entrez G ou M : ");
+                ;
             }
-        } ;
-        return textInput.equals("G") ? PlayerType.WARRIOR : PlayerType.MAGICIAN;
+        }
+        ;
+        return textInput.equals("G") ? PlayerType.WARRIOR : PlayerType.WIZARD;
     }
 
-    private Person createPlayer(Scanner sc) {
+    private Person createPlayer() {
         System.out.println();
         System.out.println("Création d'un personnage");
         System.out.println("------------------------");
-        return new Person(getPlayerName(sc), getPlayerType(sc));
+        return new Person(getPlayerName(), getPlayerType());
     }
 
-    private void quit() {
+    public void quit() {
         System.out.println("Bye bye...");
         System.exit(0);
     }
 
-    private void modifyPlayer(Person person, Scanner sc) {
-        System.out.println(person);
+    private void modifyPlayer(Person player) {
+        System.out.println(player);
         System.out.println(" ");
-        person.setName(getPlayerName(sc));
-        person.setType(getPlayerType(sc));
+        PlayerType playerType = getPlayerType();
+        player.setName(getPlayerName());
+        player.setType(playerType);
+        switch (playerType) {
+            case WARRIOR:
+                player.setLife(10);
+                player.setForce(10);
+                break;
+            case WIZARD:
+                player.setLife(6);
+                player.setForce(15);
+        }
     }
 
-    private void displayPlayer(Person person) {
-        System.out.println("\n" + person);
+    private void displayPlayer(Person player) {
+        System.out.println("\n" + player);
+    }
+
+    private void displayAllPlayers(List<Person> players) {
+        if (players.isEmpty()) {
+            Msg.red("\nAucun joueur n'a été créé");
+        } else {
+            System.out.println("\nListe des joueurs :\n");
+            for (Person player : players) {
+                System.out.println(player);
+            }
+        }
     }
 
     private void displayPlayerMenu() {
@@ -52,42 +94,86 @@ public class Menu {
         System.out.println("   Que voulez-vous faire maintenant ?\n");
         System.out.println("   │ A. Afficher le personnage créé");
         System.out.println("   │ M. Modifier le personnage");
+        System.out.println("   │ C. Créer un autre personnage");
         System.out.println("   │ R. Revenir au menu principal");
         System.out.println("   │ Q. Quitter le jeu");
-        System.out.print(  "\n   Entrez A, M, R ou Q : ");
+        System.out.print("\n   Entrez A, M, C, R ou Q : ");
     }
 
-    private void playerMenu(Scanner sc, List<Person> people) {
+    private void playerMenu(List<Person> players) {
         String answer;
         do {
             displayPlayerMenu();
             answer = sc.nextLine();
             switch (answer) {
-                case "A": displayPlayer(people.getLast()); break;
-                case "M": modifyPlayer(people.getLast(), sc); break;
-                case "R": System.out.println("   Retour au menu principal :\n"); break;
-                case "Q": quit(); break;
-                default: System.out.print("Entrez A, M, R ou Q : ");
+                case "A":
+                    displayPlayer(players.getLast());
+                    break;
+                case "M":
+                    modifyPlayer(players.getLast());
+                    break;
+                case "C":
+                    players.add(createPlayer());
+                    break;
+                case "R":
+                    System.out.println("   Retour au menu principal :\n");
+                    break;
+                case "Q":
+                    quit();
+                    break;
+                default:
+                    System.out.println(Colors.colored(Colors.ANSI_RED, "   Ce choix n'est pas autorisé\n"));
             }
-        } while (! answer.equals("R"));
+        } while (!answer.equals("R"));
     }
+
+    public void endOfGameMenu() {
+        String answer;
+        System.out.println("\n");
+        System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°");
+        System.out.println("        FIN DU JEU       ");
+        System.out.println(" Que voulez-vous faire ? ");
+        System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°");
+        do {
+            System.out.println("R. Recommencer une partie");
+            System.out.println("Q. Quitter le jeu");
+            System.out.print("\nEntrez R ou Q : ");
+            answer = sc.nextLine();
+            switch (answer) {
+                case "Q":
+                    quit();
+                    break;
+                case "R":
+                    System.out.println("\nOn recommence tout !");
+                    break;
+                default:
+                    Msg.red("Ce choix n'est pas autorisé\n");
+            }
+        } while (!answer.equals("R"));
+    }
+
 
     private void displayMainMenu() {
         System.out.println("=========================");
-        System.out.println("      MENU PRINCIPAL     ");
+//        System.out.println("      MENU PRINCIPAL     ");
+        Msg.blue("      MENU PRINCIPAL     ");
         System.out.println(" Que voulez-vous faire ? ");
         System.out.println("=========================");
-        System.out.println("C. Créer un personnage");
-        System.out.println("A. Afficher les personnages déjà créés");
+        System.out.println("C. Créer un joueur");
+        System.out.println("A. Afficher les joueurs déjà créés");
+        System.out.println("J. Jouer !");
         System.out.println("Q. Quitter le jeu");
-        System.out.print("\nEntrez C, A ou Q : ");
+        System.out.print("\nEntrez C, A, D ou Q : ");
     }
 
-    public void mainMenu(Scanner sc) {
-//        Menu menu = new Menu();
-        Game game = new Game();
+    /**
+     * Display a menu to create a list of players, and start the game
+     *
+     * @return List of <Person>, after the user chooses "J" (Jouer)
+     */
+    public List<Person> createPlayers() {
         String answer;
-        List<Person> people = new ArrayList<Person>();
+        List<Person> players = new ArrayList<Person>();
 
         do {
             displayMainMenu();
@@ -95,19 +181,29 @@ public class Menu {
             switch (answer) {
                 case "C": // Create player
                     // Add player (interactively)
-                    people.add(createPlayer(sc));
+                    players.add(createPlayer());
                     // Call player menu to display or modify created player
-                    playerMenu(sc, people);
+                    playerMenu(players);
                     break;
                 case "A": // Display players
-                    System.out.println(people); break;
-                case "G": // Start Game
-                    game.start(people); break;
-                case "Q": quit(); break;
+                    displayAllPlayers(players);
+                    break;
+                case "J": // Start Game
+                    if (players.size() == 0) {
+                        // Créer d'abord = C
+                        Msg.red("Vous ne pouvez pas jouer tant que " +
+                                "vous n'avez pas créé de joueur !");
+                        break;
+                    }
+                    return players;
+                case "Q":
+                    quit();
                 default:
-                    System.out.println("Ce choix n'est pas autorisé");
+                    Msg.red("Ce choix n'est pas autorisé\n");
             }
-        } while (! answer.equals("Q"));
+        } while (true);
+
+//        return null;
     }
 
 }

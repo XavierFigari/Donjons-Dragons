@@ -1,10 +1,5 @@
 package DD;
 
-enum PlayerType {
-    WARRIOR,
-    MAGICIAN
-}
-
 public class Person {
     // Attributes
     private String name;
@@ -20,12 +15,16 @@ public class Person {
     public Person(String name, PlayerType type) {
         this.name = name;
         this.type = type;
-        if (type == PlayerType.WARRIOR) {
+        this.reset();
+    }
+
+    public void reset() {
+        if (this.type == PlayerType.WARRIOR) {
             this.life = 10;
             this.force = 10;
             this.offensiveTool = new OffensiveTool(OffensiveToolType.ARM, 5, "Epée");
             this.defensiveTool = new DefensiveTool(DefensiveToolType.SHIELD, 5, "Bouclier");
-        } else if (type == PlayerType.MAGICIAN) {
+        } else if (this.type == PlayerType.WIZARD) {
             this.life = 6;
             this.force = 15;
             this.offensiveTool = new OffensiveTool(OffensiveToolType.SPELL, 5, "");
@@ -73,11 +72,13 @@ public class Person {
     @Override
     public String toString() {
         return
-                "    Player :\n" +
-                "       >  name  = " + getName() + '\n' +
-                "       >  type  = " + getType() + '\n' +
-                "       >  life  = " + getLife() + '\n' +
-                "       >  force = " + getForce() + '\n' ;
+                "    " + Colors.colored(Colors.ANSI_GREEN, "Joueur") + "\n" +
+                "         Nom    = " + getName() + '\n' +
+                "         Type   = " + (getType()==PlayerType.WIZARD ?
+                                        "\uD83E\uDDD9\u200D♂\uFE0F Magicien" :
+                                        "\uD83E\uDD77\uD83C\uDFFB Guerrier") + '\n' +
+                "         ❤️     = " + getLife() + '\n' +
+                "         \uD83D\uDCAA     = " + getForce() + '\n' ;
     }
 
 
