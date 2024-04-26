@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.awt.SystemColor.menu;
+
 public class Menu {
 
     private String getPlayerName(Scanner sc) {
@@ -24,11 +26,11 @@ public class Menu {
         return textInput.equals("G") ? PlayerType.WARRIOR : PlayerType.MAGICIAN;
     }
 
-    private Player createPlayer(Scanner sc) {
+    private Person createPlayer(Scanner sc) {
         System.out.println();
         System.out.println("Création d'un personnage");
         System.out.println("------------------------");
-        return new Player(getPlayerName(sc), getPlayerType(sc));
+        return new Person(getPlayerName(sc), getPlayerType(sc));
     }
 
     private String getAnswerFromMainMenu(Scanner sc) {
@@ -58,15 +60,15 @@ public class Menu {
         return answer;
     }
 
-    private void playerMenu(Menu menu, Scanner sc, List<Player> players) {
+    private void playerMenu(Scanner sc, List<Person> people) {
         String answer;
         do {
-            answer = menu.getAnswerFromPlayerMenu(sc);
+            answer = getAnswerFromPlayerMenu(sc);
             switch (answer) {
-                case "A": menu.displayPlayer(players.getLast()); break;
-                case "M": menu.modifyPlayer(players.getLast(), sc); break;
+                case "A": displayPlayer(people.getLast()); break;
+                case "M": modifyPlayer(people.getLast(), sc); break;
                 case "R": System.out.println("   Retour au menu principal :\n"); break;
-                case "Q": menu.quit(); break;
+                case "Q": quit(); break;
                 default: System.out.print("Entrez A, M, R ou Q : ");
             }
         } while (! answer.equals("R"));
@@ -77,38 +79,37 @@ public class Menu {
         System.exit(0);
     }
 
-    private void modifyPlayer(Player player, Scanner sc) {
-        System.out.println(player);
+    private void modifyPlayer(Person person, Scanner sc) {
+        System.out.println(person);
         System.out.println(" ");
-        player.setName(getPlayerName(sc));
-        player.setType(getPlayerType(sc));
+        person.setName(getPlayerName(sc));
+        person.setType(getPlayerType(sc));
     }
 
-    private void displayPlayer(Player player) {
-        System.out.println("\n" + player);
+    private void displayPlayer(Person person) {
+        System.out.println("\n" + person);
     }
 
-    public static void main(String[] args) {
-        Menu menu = new Menu();
+    public void mainMenu(Scanner sc) {
+//        Menu menu = new Menu();
         Game game = new Game();
-        Scanner sc = new Scanner(System.in);
         String answer;
-        List<Player> players = new ArrayList<Player>();
+        List<Person> people = new ArrayList<Person>();
 
         do {
-            answer = menu.getAnswerFromMainMenu(sc);
+            answer = getAnswerFromMainMenu(sc);
             switch (answer) {
                 case "C": // Create player
                     // Add player (interactively)
-                    players.add(menu.createPlayer(sc));
+                    people.add(createPlayer(sc));
                     // Call player menu to display or modify created player
-                    menu.playerMenu(menu, sc, players);
+                    playerMenu(sc, people);
                     break;
                 case "A": // Display players
-                    System.out.println(players); break;
+                    System.out.println(people); break;
                 case "G": // Start Game
-                    game.start(players); break;
-                case "Q": menu.quit(); break;
+                    game.start(people); break;
+                case "Q": quit(); break;
                 default:
                     System.out.println("Ce choix n'est pas autorisé");
             }

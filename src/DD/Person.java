@@ -5,7 +5,7 @@ enum PlayerType {
     MAGICIAN
 }
 
-public class Player {
+public class Person {
     // Attributes
     private String name;
     private PlayerType type;
@@ -17,7 +17,7 @@ public class Player {
 
     // Constructors
 
-    public Player(String name, PlayerType type) {
+    public Person(String name, PlayerType type) {
         this.name = name;
         this.type = type;
         if (type == PlayerType.WARRIOR) {
@@ -34,12 +34,12 @@ public class Player {
         this.position = 1;
     }
 
-    public Player(String name) {
+    public Person(String name) {
         this.name = name;
         this.type = null;
     }
 
-    public Player() {
+    public Person() {
         this.type = null;
         this.name = "";
     }

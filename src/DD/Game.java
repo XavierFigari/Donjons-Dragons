@@ -5,11 +5,12 @@ import java.util.Random;
 
 public class Game {
 
-    public void start(List<Player> players) {
+    public void start(List<Person> people) {
+        int n;
         System.out.println("Le jeu démarre !");
-        for (Player player : players) {
-            n = throwDice()
-            player.setPosition(throwDice());
+        for (Person person : people) {
+            n = throwDice();
+            person.setPosition(n);
         }
     }
 
