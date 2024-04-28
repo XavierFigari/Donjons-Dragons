@@ -15,13 +15,21 @@ public class Menu {
     }
 
     public void displayTurnNumber(int n) {
-        Msg.blue("\n*** TOUR DE JEU " + n + " ***\n");
+        Msg.blue("****** TOUR DE JEU " + n + " ******\n");
     }
 
-    public void displayPlayerTurn(int playerIndex, int diceValue, int newPosition) {
-        Msg.green("Joueur " + playerIndex);
-        Msg.white("  Dé = " + diceValue);
+    private String dieEmoji(int dieVal) {
+        return Character.toString(9855 + dieVal);
+    }
+
+    public void displayPlayerStatus(Person player, int diceValue, int newPosition) {
+        Msg.white("  Dé = " + diceValue + " " + dieEmoji(diceValue));
         Msg.white("  Nelle position = " + newPosition);
+        System.out.println();
+    }
+
+    public void displayPlayerName(Person player) {
+        Msg.green("Joueur " + player.getName() + " (" + player.getTypeString() + ") : position " + player.getPosition());
     }
 
     private String getPlayerName() {
@@ -92,8 +100,8 @@ public class Menu {
     private void displayPlayerMenu() {
         System.out.println(" ");
         System.out.println("   Que voulez-vous faire maintenant ?\n");
-        System.out.println("   │ A. Afficher le personnage créé");
-        System.out.println("   │ M. Modifier le personnage");
+        System.out.println("   │ A. Afficher le personnage qui vient d'être créé");
+        System.out.println("   │ M. Modifier le personnage qui vient d'être créé");
         System.out.println("   │ C. Créer un autre personnage");
         System.out.println("   │ R. Revenir au menu principal");
         System.out.println("   │ Q. Quitter le jeu");
@@ -189,8 +197,8 @@ public class Menu {
                     displayAllPlayers(players);
                     break;
                 case "J": // Start Game
-                    if (players.size() == 0) {
-                        // Créer d'abord = C
+                    if (players.isEmpty()) {
+                        // Créer d'abord
                         Msg.red("Vous ne pouvez pas jouer tant que " +
                                 "vous n'avez pas créé de joueur !");
                         break;
@@ -206,19 +214,22 @@ public class Menu {
 //        return null;
     }
 
+    public void printBox(String text) {
+        Msg.printBox(text);
+    }
+
+    public void displayWinner(Person player) {
+        System.out.println();
+        Msg.rainbow(player.getName() + " a gagné !");
+        System.out.println();
+    }
+
+    public void askToThrowDice() {
+        String answer;
+        System.out.print("\nAppuie sur Entrée pour jeter le dé, ou Q pour quitter...");
+        answer = sc.nextLine();
+        if (answer.equals("Q")) {
+            quit();
+        }
+    }
 }
-
-// essai de Singleton :
-
-// final class MyScanner {
-//    Scanner sc;
-//    private static final MyScanner instance = new MyScanner();
-//    private MyScanner(){
-//        // init the scanner
-//        sc = new Scanner(System.in);
-//    }
-//    //Get the only object available
-//    public static MyScanner getInstance(){
-//        return instance;
-//    }
-//}

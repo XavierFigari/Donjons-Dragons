@@ -16,8 +16,7 @@ public class Game {
         int turnCount=1;
 
         menu.displayGameStart();
-        while (! gameFinished(players)) {
-            gameTurn(players, turnCount);
+        while (! gameTurn(players, turnCount)) {
             turnCount++;
         }
     }
@@ -32,24 +31,31 @@ public class Game {
         return false;
     }
 
-    private void gameTurn(List<Person> players, int turnCount) {
+    private boolean gameTurn(List<Person> players, int turnCount) {
         menu.displayTurnNumber(turnCount);
         Person player;
         int diceValue;
+        boolean gameOver = false;
         // Pour tous les joueurs :
         for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
             player = players.get(playerIndex);
+            menu.displayPlayerName(player);
             diceValue = throwDice();
-            int newPosition = player.getPosition() + diceValue;
+            int newPosition = Math.min(player.getPosition() + diceValue, BOARD_SIZE);
             player.setPosition(newPosition);
-            menu.displayPlayerTurn(playerIndex, diceValue, newPosition);
+            menu.displayPlayerStatus(player, diceValue, newPosition);
+            if (newPosition == BOARD_SIZE) {
+                menu.displayWinner(player);
+                gameOver=true;}
         }
+        return gameOver;
     }
 
     private int throwDice() {
-//        menu.askToThrowDice();
+        menu.askToThrowDice();
         Random rand = new Random();
         // return random int between 1 and 6
         return rand.nextInt(6) + 1;
     }
+
 }

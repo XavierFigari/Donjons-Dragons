@@ -11,12 +11,21 @@ public class Colors {
     public static String ANSI_CYAN = "\u001B[36m";
     public static String ANSI_WHITE = "\u001B[37m";
 
-    public static String randomColor() {
-        String[] colors = {ANSI_RED, ANSI_GREEN, ANSI_YELLOW, ANSI_BLUE, ANSI_PURPLE, ANSI_CYAN, ANSI_WHITE};
-        return colors[(int) (Math.random() * colors.length)];
-    }
+    public static String[] rainbowColors =
+            {ANSI_PURPLE, ANSI_BLUE, ANSI_CYAN, ANSI_GREEN, ANSI_YELLOW, ANSI_RED};
+
+
     public static String colored(String color, String text) {
         return color + text + Colors.ANSI_RESET;
+    }
+
+    public static String rainbow(String text) {
+        String s="";
+        for (int i = 0; i < text.length(); i++) {
+            String color = Colors.rainbowColors[i % Colors.rainbowColors.length];
+            s+=color + text.charAt(i);
+        }
+        return s + Colors.ANSI_RESET;
     }
 
 }

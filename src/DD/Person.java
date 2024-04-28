@@ -50,6 +50,11 @@ public class Person {
     public PlayerType getType() {
         return type;
     }
+    public String getTypeString() {
+        return type == PlayerType.WIZARD ?
+                "\uD83E\uDDD9 Magicien" :
+                "\uD83E\uDD77 Guerrier";
+    }
     public int getLife() {
         return life;
     }
@@ -75,8 +80,8 @@ public class Person {
                 "    " + Colors.colored(Colors.ANSI_GREEN, "Joueur") + "\n" +
                 "         Nom    = " + getName() + '\n' +
                 "         Type   = " + (getType()==PlayerType.WIZARD ?
-                                        "\uD83E\uDDD9\u200D♂\uFE0F Magicien" :
-                                        "\uD83E\uDD77\uD83C\uDFFB Guerrier") + '\n' +
+                                        "\uD83E\uDDD9 Magicien" :
+                                        "\uD83E\uDD77 Guerrier") + '\n' +
                 "         ❤️     = " + getLife() + '\n' +
                 "         \uD83D\uDCAA     = " + getForce() + '\n' ;
     }
