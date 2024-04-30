@@ -9,16 +9,15 @@ public class Main {
         Menu menu = new Menu();
         List<Person> players;
 
-        menu.printBox("ĐØŇĴØŇŞ €Ŧ ĐŘΔǤØŇŞ" );
+        menu.printBox("DONJONS ET DRAGONS" );
 
         while (true) {
             players = menu.createPlayers();
             Game game = new Game(menu); // on passe le menu en paramètre pour
-                                        // pouvoir l'appeller depuis Game
+                                        // pouvoir l'appeler depuis Game
             game.play(players);
             // Si je suis ici, c'est que le jeu est terminé
             menu.endOfGameMenu();
-//            players = menu.createPlayers();
         }
     }
 
