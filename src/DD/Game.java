@@ -7,9 +7,11 @@ public class Game {
 
     private static final int BOARD_SIZE = 64;
     private final Menu menu;
+    private final Board board;
 
     public Game(Menu menu) {
         this.menu = menu;
+        this.board = new Board();
     }
 
     public void play(List<Person> players) {
@@ -27,14 +29,6 @@ public class Game {
         }
     }
 
-    private class PersonOutOfBoard extends Exception {
-        public String playerName;
-        public PersonOutOfBoard(Person player) {
-            playerName = player.getName();
-            Msg.red("Le personnage " + player.getName() + " est sorti du plateau !");
-        }
-    }
-
     private boolean gameTurn(List<Person> players, int turnCount) throws PersonOutOfBoard {
         menu.displayTurnNumber(turnCount);
         int diceValue, newPosition;
@@ -42,11 +36,19 @@ public class Game {
         // Pour tous les joueurs :
         for (Person player : players) {
 
+            // Afficher le joueur
+            // ------------------
             menu.displayPlayerName(player);
-            diceValue = throwDice();
-            newPosition = player.getPosition() + diceValue;
 
-            player.setPosition(newPosition > BOARD_SIZE ? BOARD_SIZE : newPosition);
+            // LANCER LE DE
+            // ------------
+            diceValue = throwDice();
+
+            // Mettre à jour la position
+            newPosition = player.getPosition() + diceValue;
+            player.setPosition(Math.min(newPosition, BOARD_SIZE));
+
+            // Afficher les infos sur le coup joué
             menu.displayPlayerStatus(player, diceValue, newPosition);
 
             if (newPosition > BOARD_SIZE) {
@@ -58,6 +60,13 @@ public class Game {
         return gameOver;
     }
 
+    private class PersonOutOfBoard extends Exception {
+        public String playerName;
+        public PersonOutOfBoard(Person player) {
+            playerName = player.getName();
+            Msg.red("Le personnage " + player.getName() + " est sorti du plateau !");
+        }
+    }
 
     private int throwDice() {
 //        menu.askToThrowDice();

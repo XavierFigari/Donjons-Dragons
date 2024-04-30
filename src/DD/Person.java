@@ -5,23 +5,15 @@ public abstract class Person {
     // Attributes
     // --------------------------------------------------------------------------
     protected String name;
-//    protected PlayerType type;
     // available to children (protected) :
     protected int life;
     protected int force;
-    protected DefensiveTool defensiveTool;
-    protected OffensiveTool offensiveTool;
+    protected DefensiveTool defensiveTool; // shield (warrior) or philtre (wizard)
+    protected OffensiveTool offensiveTool; // arm (warrior) or spell (wizard)
     protected int position;
 
     // Constructors
     // --------------------------------------------------------------------------
-/*
-    public Person(String playerName, PlayerType playerType) {
-        this.name = playerName;
-        this.type = playerType;
-        this.reset();
-    }
-*/
     public Person(String name) {
         this.name = name;
         this.reset();
@@ -29,7 +21,6 @@ public abstract class Person {
 
     // Methods
     // --------------------------------------------------------------------------
-
     public void reset() {
         this.position = 1;
     }
