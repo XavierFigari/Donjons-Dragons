@@ -11,21 +11,16 @@ enum DefensiveToolType {
     PHILTRE
 }
 
-public class DefensiveTool {
-    private final DefensiveToolType toolType;
+public abstract class DefensiveTool {
     private final int defenseLevel;
     private final String name;
 
-    public DefensiveTool(DefensiveToolType toolType, int defenseLevel, String name) {
-        this.toolType = toolType;
+    public DefensiveTool(int defenseLevel, String name) {
         this.defenseLevel = defenseLevel;
         this.name = name;
     }
 
     // Getters
-    public DefensiveToolType getToolType() {
-        return toolType;
-    }
     public int getDefenseLevel() {
         return defenseLevel;
     }

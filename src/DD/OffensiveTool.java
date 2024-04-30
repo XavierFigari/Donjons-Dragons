@@ -4,32 +4,25 @@ enum Arms {
     SWORD,
     CLUB
 }
-
 enum Spells {
     FIREBALL,
     LIGHTNING
 }
-
 enum OffensiveToolType {
     ARM,
     SPELL
 }
+public abstract class OffensiveTool {
 
-public class OffensiveTool {
-    private final OffensiveToolType toolType;
     private final int attackLevel;
     private final String name;
 
-    public OffensiveTool(OffensiveToolType toolType, int attackLevel, String name) {
-        this.toolType = toolType;
+    public OffensiveTool(int attackLevel, String name) {
         this.attackLevel = attackLevel;
         this.name = name;
     }
 
     // Getters
-    public OffensiveToolType getToolType() {
-        return toolType;
-    }
     public int getAttackLevel() {
         return attackLevel;
     }

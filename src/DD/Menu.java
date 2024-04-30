@@ -19,12 +19,13 @@ public class Menu {
     }
 
     private String dieEmoji(int dieVal) {
+        // Die emoji starts at 9856 (1), then 9857 (2), etc.
         return Character.toString(9855 + dieVal);
     }
 
     public void displayPlayerStatus(Person player, int diceValue, int newPosition) {
         Msg.white("  Dé = " + diceValue + " " + dieEmoji(diceValue));
-        Msg.white("  Nelle position = " + newPosition);
+        Msg.white("  Nouvelle position = " + newPosition);
         System.out.println();
     }
 
@@ -46,7 +47,6 @@ public class Menu {
             if (!textInput.equals("G") && !textInput.equals("M")) {
                 System.out.println(Colors.colored(Colors.ANSI_RED, "Ce choix n'est pas autorisé\n"));
                 System.out.print("Entrez G ou M : ");
-                ;
             }
         }
         ;
@@ -57,29 +57,16 @@ public class Menu {
         System.out.println();
         System.out.println("Création d'un personnage");
         System.out.println("------------------------");
-        return new Person(getPlayerName(), getPlayerType());
+        return getPlayerType() == PlayerType.WARRIOR ? new Warrior(getPlayerName()) : new Wizard(getPlayerName());
+    }
+
+    private void deletePlayer(Person player) {
+
     }
 
     public void quit() {
         System.out.println("Bye bye...");
         System.exit(0);
-    }
-
-    private void modifyPlayer(Person player) {
-        System.out.println(player);
-        System.out.println(" ");
-        PlayerType playerType = getPlayerType();
-        player.setName(getPlayerName());
-        player.setType(playerType);
-        switch (playerType) {
-            case WARRIOR:
-                player.setLife(10);
-                player.setForce(10);
-                break;
-            case WIZARD:
-                player.setLife(6);
-                player.setForce(15);
-        }
     }
 
     private void displayPlayer(Person player) {
@@ -90,7 +77,7 @@ public class Menu {
         if (players.isEmpty()) {
             Msg.red("\nAucun joueur n'a été créé");
         } else {
-            System.out.println("\nListe des joueurs :\n");
+            System.out.println("\nNombre de Joueurs : " + players.size() + "\n");
             for (Person player : players) {
                 System.out.println(player);
             }
@@ -100,8 +87,8 @@ public class Menu {
     private void displayPlayerMenu() {
         System.out.println(" ");
         System.out.println("   Que voulez-vous faire maintenant ?\n");
-        System.out.println("   │ A. Afficher le personnage qui vient d'être créé");
-        System.out.println("   │ M. Modifier le personnage qui vient d'être créé");
+        System.out.println("   │ A. Afficher les personnages déjà créés");
+        System.out.println("   │ M. Modifier le personnage qui vient d'être créé (le dernier)");
         System.out.println("   │ C. Créer un autre personnage");
         System.out.println("   │ R. Revenir au menu principal");
         System.out.println("   │ Q. Quitter le jeu");
@@ -115,10 +102,13 @@ public class Menu {
             answer = sc.nextLine();
             switch (answer) {
                 case "A":
-                    displayPlayer(players.getLast());
+//                    displayPlayer(players.getLast());
+                    displayAllPlayers(players);
                     break;
                 case "M":
-                    modifyPlayer(players.getLast());
+                    players.remove(players.getLast());
+                    players.add(createPlayer());
+                    ;
                     break;
                 case "C":
                     players.add(createPlayer());
@@ -134,6 +124,7 @@ public class Menu {
             }
         } while (!answer.equals("R"));
     }
+
 
     public void endOfGameMenu() {
         String answer;
@@ -164,10 +155,10 @@ public class Menu {
     private void displayMainMenu() {
         System.out.println("=========================");
 //        System.out.println("      MENU PRINCIPAL     ");
-        Msg.blue("      MENU PRINCIPAL     ");
+        Msg.blue("\u001b[1m" + "      MENU PRINCIPAL     " + "\u001b[0m");
         System.out.println(" Que voulez-vous faire ? ");
         System.out.println("=========================");
-        System.out.println("C. Créer un joueur");
+        System.out.println("C. Créer des joueurs");
         System.out.println("A. Afficher les joueurs déjà créés");
         System.out.println("J. Jouer !");
         System.out.println("Q. Quitter le jeu");

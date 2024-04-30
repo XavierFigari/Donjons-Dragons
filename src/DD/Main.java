@@ -9,7 +9,7 @@ public class Main {
         Menu menu = new Menu();
         List<Person> players;
 
-        menu.printBox("ĐØŇĴØŇŞ €Ŧ ĐŘΔǤØŇŞ");
+        menu.printBox("ĐØŇĴØŇŞ €Ŧ ĐŘΔǤØŇŞ" );
 
         while (true) {
             players = menu.createPlayers();

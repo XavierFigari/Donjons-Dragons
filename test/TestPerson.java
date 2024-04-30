@@ -1,5 +1,6 @@
 import DD.Person;
 import DD.PlayerType;
+import DD.Warrior;
 
 public class TestPerson {
 
@@ -10,7 +11,8 @@ public class TestPerson {
     private static void testResetWarrior() {
         String name = "toto";
         PlayerType type = PlayerType.WARRIOR;
-        Person p = new Person(name, type);
+//        Person p = new Person(name, type);
+        Person p = new Warrior(name);
 
         p.setPosition(99);
         p.setLife(98);
