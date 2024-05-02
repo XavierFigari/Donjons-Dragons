@@ -1,4 +1,4 @@
-package DD;
+package DD.tools;
 
 
 enum Potions {

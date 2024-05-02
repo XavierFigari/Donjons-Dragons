@@ -1,6 +1,6 @@
-import DD.Person;
-import DD.PlayerType;
-import DD.Warrior;
+import DD.persons.Person;
+import DD.persons.PlayerType;
+import DD.persons.Warrior;
 
 public class TestPerson {
 

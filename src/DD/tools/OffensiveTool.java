@@ -1,4 +1,4 @@
-package DD;
+package DD.tools;
 
 enum Arms {
     SWORD,
@@ -14,8 +14,12 @@ enum OffensiveToolType {
 }
 public abstract class OffensiveTool {
 
-    private final int attackLevel;
-    private final String name;
+    private int attackLevel;
+    private String name;
+
+    public OffensiveTool() {
+
+    }
 
     public OffensiveTool(int attackLevel, String name) {
         this.attackLevel = attackLevel;

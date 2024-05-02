@@ -1,10 +1,12 @@
-package DD;
+package DD.persons;
+
+import DD.board.Arm;
+import DD.tools.Shield;
 
 public class Warrior extends Person {
 
     public Warrior(String name) {
         super(name);
-//        this.type = PlayerType.WARRIOR;
     }
 
     @Override

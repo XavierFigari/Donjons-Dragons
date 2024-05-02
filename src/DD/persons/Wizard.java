@@ -1,4 +1,7 @@
-package DD;
+package DD.persons;
+
+import DD.tools.Philtre;
+import DD.tools.Spell;
 
 public class Wizard extends Person {
 

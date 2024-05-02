@@ -1,6 +1,8 @@
 package DD;
 
-import javax.swing.*;
+import DD.game.Game;
+import DD.persons.Person;
+
 import java.util.List;
 
 public class Main {

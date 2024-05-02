@@ -1,4 +1,4 @@
-package DD;
+package DD.tools;
 
 public class Philtre extends DefensiveTool {
     public Philtre(int defenseLevel, String name) {

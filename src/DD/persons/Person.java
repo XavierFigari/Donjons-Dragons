@@ -1,4 +1,8 @@
-package DD;
+package DD.persons;
+
+import DD.Colors;
+import DD.tools.OffensiveTool;
+import DD.tools.DefensiveTool;
 
 public abstract class Person {
 

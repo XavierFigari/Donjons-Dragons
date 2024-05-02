@@ -1,6 +1,10 @@
-package DD;
+package DD.game;
 
-import java.util.ArrayList;
+import DD.board.Board;
+import DD.Menu;
+import DD.Msg;
+import DD.persons.Person;
+
 import java.util.List;
 import java.util.Random;
 
@@ -8,7 +12,7 @@ public class Game {
 
     private static final int BOARD_SIZE = 64;
     private final Menu menu;
-    List<Square> board = new ArrayList<Square>();
+    Board board;
 
     public Game(Menu menu) {
         this.menu = menu;

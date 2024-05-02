@@ -1,5 +1,10 @@
 package DD;
 
+import DD.persons.Person;
+import DD.persons.PlayerType;
+import DD.persons.Warrior;
+import DD.persons.Wizard;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
