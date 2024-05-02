@@ -1,5 +1,6 @@
 package DD;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -7,11 +8,11 @@ public class Game {
 
     private static final int BOARD_SIZE = 64;
     private final Menu menu;
-    private final Board board;
+    List<Square> board = new ArrayList<Square>();
 
     public Game(Menu menu) {
         this.menu = menu;
-        this.board = new Board();
+//        this.square = new Square();
     }
 
     public void play(List<Person> players) {
@@ -40,11 +41,12 @@ public class Game {
             // ------------------
             menu.displayPlayerName(player);
 
-            // LANCER LE DE
+            // Lancer le dé
             // ------------
             diceValue = throwDice();
 
             // Mettre à jour la position
+            // -------------------------
             newPosition = player.getPosition() + diceValue;
             player.setPosition(Math.min(newPosition, BOARD_SIZE));
 
