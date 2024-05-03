@@ -12,45 +12,49 @@ public class Game {
 
     private static final int BOARD_SIZE = 64;
     private final Menu menu;
+    List<Person> players;
     Board board;
 
-    public Game(Menu menu) {
-        this.menu = menu;
-//        this.square = new Square();
+    public Game() {
+        this.menu = new Menu();
     }
 
-    public void play(List<Person> players) {
+    public void play() {
         int turnCount = 1;
         boolean gameOver = false;
+
+        // Greetings !
+        menu.printBox("DONJONS ET DRAGONS" );
+
+        // Create players !
+        players = menu.createPlayers();
+
+        // Play !
         menu.displayGameStart();
         while (!gameOver) {
             try {
                 gameOver = gameTurn(players, turnCount);
-            } catch (PersonOutOfBoard e) {
-                System.out.println("Bon, on va dire qu'il a gagné.");
+            } catch (PersonOutOfBoard player) {
+                System.out.println("Bon, on va dire que " + player.playerName + " a gagné.");
                 gameOver = true;
             }
             turnCount++;
         }
+        menu.endOfGameMenu();
     }
 
     private boolean gameTurn(List<Person> players, int turnCount) throws PersonOutOfBoard {
         menu.displayTurnNumber(turnCount);
         int diceValue, newPosition;
         boolean gameOver = false;
+
         // Pour tous les joueurs :
         for (Person player : players) {
 
-            // Afficher le joueur
-            // ------------------
             menu.displayPlayerName(player);
 
-            // Lancer le dé
-            // ------------
             diceValue = throwDice();
 
-            // Mettre à jour la position
-            // -------------------------
             newPosition = player.getPosition() + diceValue;
             player.setPosition(Math.min(newPosition, BOARD_SIZE));
 

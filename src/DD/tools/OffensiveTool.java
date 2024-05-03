@@ -1,10 +1,10 @@
 package DD.tools;
 
-enum Arms {
+enum ArmType {
     SWORD,
     CLUB
 }
-enum Spells {
+enum SpellType {
     FIREBALL,
     LIGHTNING
 }
