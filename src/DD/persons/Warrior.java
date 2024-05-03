@@ -1,6 +1,6 @@
 package DD.persons;
 
-import DD.board.Arm;
+import DD.tools.Weapon;
 import DD.tools.Shield;
 
 public class Warrior extends Person {
@@ -14,7 +14,7 @@ public class Warrior extends Person {
         super.reset();
         this.life = 10;
         this.force = 10;
-        this.offensiveTool = new Arm(5, "Epée");
+        this.offensiveTool = new Weapon(5, "Epée");
         this.defensiveTool = new Shield(5, "Bouclier");
     }
 

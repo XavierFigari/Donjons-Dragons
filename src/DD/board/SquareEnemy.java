@@ -1,6 +1,6 @@
 package DD.board;
 
-public class Enemy implements Square {
+public class SquareEnemy implements Square {
     @Override
     public void openSquare() {
         System.out.println("Ennemi");

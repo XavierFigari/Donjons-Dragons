@@ -3,6 +3,7 @@ package DD.game;
 import DD.board.Board;
 import DD.Menu;
 import DD.Msg;
+import DD.board.BoardType;
 import DD.persons.Person;
 
 import java.util.List;
@@ -14,9 +15,12 @@ public class Game {
     private final Menu menu;
     List<Person> players;
     Board board;
+    Dice dice;
 
     public Game() {
         this.menu = new Menu();
+        this.dice = new DiceOne(); // NormalDice();
+        this.board = new Board(BoardType.TESTING);
     }
 
     public void play() {
@@ -53,7 +57,7 @@ public class Game {
 
             menu.displayPlayerName(player);
 
-            diceValue = throwDice();
+            diceValue = dice.throwDice();
 
             newPosition = player.getPosition() + diceValue;
             player.setPosition(Math.min(newPosition, BOARD_SIZE));
@@ -76,13 +80,6 @@ public class Game {
             playerName = player.getName();
             Msg.red("Le personnage " + player.getName() + " est sorti du plateau !");
         }
-    }
-
-    private int throwDice() {
-//        menu.askToThrowDice();
-        Random rand = new Random();
-        // return random int between 1 and 6
-        return rand.nextInt(6) + 1;
     }
 
 }

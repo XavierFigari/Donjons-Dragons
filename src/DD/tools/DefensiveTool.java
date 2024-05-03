@@ -1,7 +1,7 @@
 package DD.tools;
 
 
-enum Potions {
+enum PotionType {
     STDPOTION,
     BIGPOTION
 }
@@ -12,6 +12,7 @@ enum DefensiveToolType {
 }
 
 public abstract class DefensiveTool {
+
     private final int defenseLevel;
     private final String name;
 

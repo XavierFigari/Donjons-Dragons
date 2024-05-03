@@ -1,6 +1,6 @@
 package DD.board;
 
-public class Empty implements Square {
+public class SquareEmpty implements Square {
     @Override
     public void openSquare() {
         System.out.println("--vide--");

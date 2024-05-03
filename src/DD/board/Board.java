@@ -10,32 +10,35 @@ public class Board {
         switch (boardType) {
             case TESTING -> {
                 this.squares = List.of(     // List.of creates an immutable list
-                        new Empty()
+                        new SquareEmpty(),
+                        new SquareEnemy(),
+                        new SquareWeapon(),
+                        new SquarePotion()
                 );
             }
             case EASY -> {
                 this.squares = List.of(     // List.of creates an immutable list
-                        new Empty(),
-                        new Enemy(),
-                        new Arm()
+                        new SquareEmpty(),
+                        new SquareEnemy(),
+                        new SquareWeapon()
                 );
             }
             case NORMAL -> {
                 this.squares = List.of(     // List.of creates an immutable list
-                        new Empty(),
-                        new Empty(),
-                        new Empty(),
-                        new Empty()
+                        new SquareEmpty(),
+                        new SquareEmpty(),
+                        new SquareEmpty(),
+                        new SquareEmpty()
                 );
             }
             case DIFFICULT -> {
                 this.squares = List.of(     // List.of creates an immutable list
-                        new Empty(),
-                        new Empty(),
-                        new Empty(),
-                        new Empty(),
-                        new Empty(),
-                        new Empty()
+                        new SquareEmpty(),
+                        new SquareEmpty(),
+                        new SquareEmpty(),
+                        new SquareEmpty(),
+                        new SquareEmpty(),
+                        new SquareEmpty()
                 );
             }
         }

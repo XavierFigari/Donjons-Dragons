@@ -1,6 +1,6 @@
 package DD.tools;
 
-enum ArmType {
+enum WeaponType {
     SWORD,
     CLUB
 }
