@@ -7,22 +7,28 @@ import DD.board.BoardType;
 import DD.persons.Person;
 
 import java.util.List;
-import java.util.Random;
 
 public class Game {
 
-    private static final int BOARD_SIZE = 64;
+    // Constant
+    private int boardSize;
+
+    // Attributes
     private final Menu menu;
     List<Person> players;
     Board board;
     Dice dice;
 
+    // Constructor
     public Game() {
         this.menu = new Menu();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.TESTING);
+        this.board = new Board(BoardType.TESTING); // C'est ici qu'on choisit le type de plateau
+        // on pourrait le passer en paramètre du constructeur
+        this.boardSize =  board.getSquares().size();
     }
 
+    // Method : play
     public void play() {
         int turnCount = 1;
         boolean gameOver = false;
@@ -36,8 +42,11 @@ public class Game {
         // Play !
         menu.displayGameStart();
         while (!gameOver) {
+            menu.displayTurnNumber(turnCount);
             try {
-                gameOver = gameTurn(players, turnCount);
+                //----------------------------------
+                gameOver = gameTurn(players, board);
+                //----------------------------------
             } catch (PersonOutOfBoard player) {
                 System.out.println("Bon, on va dire que " + player.playerName + " a gagné.");
                 gameOver = true;
@@ -47,8 +56,9 @@ public class Game {
         menu.endOfGameMenu();
     }
 
-    private boolean gameTurn(List<Person> players, int turnCount) throws PersonOutOfBoard {
-        menu.displayTurnNumber(turnCount);
+    // Méthode : jouer un tour
+    private boolean gameTurn(List<Person> players, Board board) throws PersonOutOfBoard {
+
         int diceValue, newPosition;
         boolean gameOver = false;
 
@@ -60,15 +70,19 @@ public class Game {
             diceValue = dice.throwDice();
 
             newPosition = player.getPosition() + diceValue;
-            player.setPosition(Math.min(newPosition, BOARD_SIZE));
+            player.setPosition(Math.min(newPosition, boardSize));
 
             // Afficher les infos sur le coup joué
             menu.displayPlayerStatus(player, diceValue, newPosition);
 
-            if (newPosition > BOARD_SIZE) {
+            // Throw exception if new position is out of board
+            if (newPosition > boardSize) {
                 menu.displayWinner(player);
                 throw new PersonOutOfBoard(player);
             }
+
+            // Ouvrir la case à la nouvelle position
+            board.getSquare(newPosition).openSquare();
 
         }
         return gameOver;

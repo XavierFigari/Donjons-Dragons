@@ -20,13 +20,13 @@ public abstract class Person {
     // --------------------------------------------------------------------------
     public Person(String name) {
         this.name = name;
-        this.reset();
+        this.position = 0;
     }
 
     // Methods
     // --------------------------------------------------------------------------
     public void reset() {
-        this.position = 1;
+        this.position = 0;
     }
 
     @Override
