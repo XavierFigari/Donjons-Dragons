@@ -1,10 +1,16 @@
 package DD.board.enemies;
 
 import DD.board.Square;
+import DD.persons.Person;
 
-public class SquareDragon extends SquareEnemy implements Square {
+public class SquareDragon implements Square {
     @Override
-    public void openSquare() {
-        System.out.println("Dragon");
+    public String toString() {
+        return "Dragon";
+    }
+
+    @Override
+    public void interact(Person person) {
+        System.out.println("Je suis un " + person.getType() + " et j'interagis avec un " + this);
     }
 }

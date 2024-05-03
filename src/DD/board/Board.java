@@ -19,6 +19,12 @@ public class Board {
 
     public Board(BoardType boardType) {
         switch (boardType) {
+            case TEST -> {
+                this.squares = List.of(     // List.of creates an immutable list
+                        new SquareDragon(),
+                        new SquareGoblin()
+                );
+            }
             case IT4 -> {
                 this.squares = List.of(     // List.of creates an immutable list
                         new SquareEmpty(),
@@ -29,8 +35,8 @@ public class Board {
             }
             case IT5 -> {
                 this.squares = List.of(
-                        new SquareEmpty(),
                         new SquareDragon(),
+                        new SquareEmpty(),
                         new SquareGoblin(),
                         new SquareSorcerer(),
                         new SquarePotionStd(),

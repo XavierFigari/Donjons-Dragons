@@ -25,6 +25,8 @@ public abstract class Person {
 
     // Methods
     // --------------------------------------------------------------------------
+    abstract public PlayerType getType();
+
     public void reset() {
         this.position = 0;
     }

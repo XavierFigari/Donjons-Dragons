@@ -89,17 +89,18 @@ public class Menu {
         }
     }
 
-    private void displayPlayerMenu() {
-        System.out.println(" ");
-        System.out.println("   Que voulez-vous faire maintenant ?\n");
-        System.out.println("   │ A. Afficher les personnages déjà créés");
-        System.out.println("   │ M. Modifier le personnage qui vient d'être créé (le dernier)");
-        System.out.println("   │ C. Créer un autre personnage");
-        System.out.println("   │ R. Revenir au menu principal");
-        System.out.println("   │ Q. Quitter le jeu");
-        System.out.print("\n   Entrez A, M, C, R ou Q : ");
-    }
+//    private void displayPlayerMenu() {
+//        System.out.println(" ");
+//        System.out.println("   Que voulez-vous faire maintenant ?\n");
+//        System.out.println("   │ A. Afficher les personnages déjà créés");
+//        System.out.println("   │ M. Modifier le personnage qui vient d'être créé (le dernier)");
+//        System.out.println("   │ C. Créer un autre personnage");
+//        System.out.println("   │ R. Revenir au menu principal");
+//        System.out.println("   │ Q. Quitter le jeu");
+//        System.out.print("\n   Entrez A, M, C, R ou Q : ");
+//    }
 
+/*
     private void playerMenu(List<Person> players) {
         String answer;
         do {
@@ -129,6 +130,7 @@ public class Menu {
             }
         } while (!answer.equals("R"));
     }
+*/
 
 
     public void endOfGameMenu() {
@@ -160,14 +162,16 @@ public class Menu {
     private void displayMainMenu() {
         System.out.println("=========================");
 //        System.out.println("      MENU PRINCIPAL     ");
-        Msg.blue("\u001b[1m" + "      MENU PRINCIPAL     " + "\u001b[0m");
+//        Msg.blue("\u001b[1m" + "      MENU PRINCIPAL     " + "\u001b[0m");
+        Msg.blue("      MENU PRINCIPAL     ");
         System.out.println(" Que voulez-vous faire ? ");
         System.out.println("=========================");
-        System.out.println("C. Créer des joueurs");
-        System.out.println("A. Afficher les joueurs déjà créés");
-        System.out.println("J. Jouer !");
-        System.out.println("Q. Quitter le jeu");
-        System.out.print("\nEntrez C, A, D ou Q : ");
+        System.out.println("   │ C. Créer un autre personnage");
+        System.out.println("   │ A. Afficher les personnages déjà créés");
+        System.out.println("   │ M. Modifier le dernier personnage créé");
+        System.out.println("   │ J. Jouer !");
+        System.out.println("   │ Q. Quitter le jeu");
+        System.out.print("\nEntrez C, A, M, J ou Q : ");
     }
 
     /**
@@ -187,10 +191,19 @@ public class Menu {
                     // Add player (interactively)
                     players.add(createPlayer());
                     // Call player menu to display or modify created player
-                    playerMenu(players);
+//                    playerMenu(players);
                     break;
                 case "A": // Display players
                     displayAllPlayers(players);
+                    break;
+                case "M": // Modify player
+                    if (players.isEmpty()) {
+                        Msg.red("Vous ne pouvez pas modifier un joueur tant que " +
+                                "vous n'en avez pas créé !");
+                        break;
+                    }
+                    players.remove(players.size() - 1);
+                    players.add(createPlayer());
                     break;
                 case "J": // Start Game
                     if (players.isEmpty()) {

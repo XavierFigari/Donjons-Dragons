@@ -23,7 +23,7 @@ public class Game {
     public Game() {
         this.menu = new Menu();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.IT5); // C'est ici qu'on choisit le type de plateau
+        this.board = new Board(BoardType.TEST); // C'est ici qu'on choisit le type de plateau
         // on pourrait le passer en paramètre du constructeur
         this.boardSize =  board.getSquares().size();
     }
@@ -59,7 +59,7 @@ public class Game {
     // Méthode : jouer un tour
     private boolean gameTurn(List<Person> players, Board board) throws PersonOutOfBoard {
 
-        int diceValue, newPosition;
+        int diceValue, newTheoricPosition, newRealPosition;
         boolean gameOver = false;
 
         // Pour tous les joueurs :
@@ -69,20 +69,25 @@ public class Game {
 
             diceValue = dice.throwDice();
 
-            newPosition = player.getPosition() + diceValue;
-            player.setPosition(Math.min(newPosition, boardSize));
+            newTheoricPosition = player.getPosition() + diceValue;
+            newRealPosition = Math.min(newTheoricPosition, boardSize);
+
+            player.setPosition(newRealPosition);
 
             // Afficher les infos sur le coup joué
-            menu.displayPlayerStatus(player, diceValue, newPosition);
+            menu.displayPlayerStatus(player, diceValue, newRealPosition);
+
+            System.out.println("Le personnage " + player.getName() + " est en position " + newRealPosition + ".");
+            System.out.println("Board size : " + boardSize);
+
+            // Faire interagir le joueur avec le contenu de la case
+            board.getSquare(newRealPosition).interact(player);
 
             // Throw exception if new position is out of board
-            if (newPosition > boardSize) {
+            if (newTheoricPosition > boardSize) {
                 menu.displayWinner(player);
                 throw new PersonOutOfBoard(player);
             }
-
-            // Ouvrir la case à la nouvelle position
-            board.getSquare(newPosition).openSquare();
 
         }
         return gameOver;

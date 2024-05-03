@@ -10,6 +10,11 @@ public class Warrior extends Person {
     }
 
     @Override
+    public PlayerType getType() {
+        return PlayerType.WARRIOR;
+    }
+
+    @Override
     public void reset() {
         super.reset();
         this.life = 10;
