@@ -1,5 +1,16 @@
 package DD.board;
 
+import DD.board.enemies.SquareDragon;
+import DD.board.enemies.SquareGoblin;
+import DD.board.enemies.SquareSorcerer;
+import DD.board.potions.SquarePotionBig;
+import DD.board.potions.SquarePotionStd;
+import DD.board.spells.SquareFireball;
+import DD.board.spells.SquareLightning;
+import DD.board.weapons.SquareHammer;
+import DD.board.weapons.SquareSword;
+import DD.board.weapons.SquareWeapon;
+
 import java.util.List;
 
 public class Board {
@@ -8,20 +19,28 @@ public class Board {
 
     public Board(BoardType boardType) {
         switch (boardType) {
-            case TESTING -> {
+            case IT4 -> {
                 this.squares = List.of(     // List.of creates an immutable list
                         new SquareEmpty(),
-                        new SquareEnemy(),
-                        new SquareWeapon(),
-                        new SquarePotion()
+                        new SquareDragon(),
+                        new SquareSword(),
+                        new SquarePotionStd()
                 );
             }
-            case EASY -> {
+            case IT5 -> {
                 this.squares = List.of(
                         new SquareEmpty(),
-                        new SquareEnemy(),
-                        new SquareWeapon()
-                );
+                        new SquareDragon(),
+                        new SquareGoblin(),
+                        new SquareSorcerer(),
+                        new SquarePotionStd(),
+                        new SquarePotionBig(),
+                        new SquareFireball(),
+                        new SquareLightning(),
+                        new SquareHammer(),
+                        new SquareSword(),
+                        new SquareSurprise()
+                        );
             }
             case NORMAL -> {
                 this.squares = List.of(
@@ -49,6 +68,6 @@ public class Board {
     }
 
     public Square getSquare(int position) {
-        return squares.get(position-1); // because ArrayList index starts at 0
+        return squares.get(position - 1); // because ArrayList index starts at 0
     }
 }

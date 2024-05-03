@@ -23,7 +23,7 @@ public class Game {
     public Game() {
         this.menu = new Menu();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.TESTING); // C'est ici qu'on choisit le type de plateau
+        this.board = new Board(BoardType.IT5); // C'est ici qu'on choisit le type de plateau
         // on pourrait le passer en paramètre du constructeur
         this.boardSize =  board.getSquares().size();
     }

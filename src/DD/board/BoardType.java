@@ -1,8 +1,8 @@
 package DD.board;
 
 public enum BoardType {
-    TESTING,
-    EASY,
+    IT4,
+    IT5,
     NORMAL,
     DIFFICULT
 }
