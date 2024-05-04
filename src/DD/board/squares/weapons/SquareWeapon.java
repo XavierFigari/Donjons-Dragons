@@ -1,6 +1,6 @@
-package DD.board.weapons;
+package DD.board.squares.weapons;
 
-import DD.board.Square;
+import DD.board.squares.Square;
 
 public abstract class SquareWeapon implements Square {
 //    @Override

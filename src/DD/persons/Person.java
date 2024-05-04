@@ -34,7 +34,7 @@ public abstract class Person {
     @Override
     public String toString() {
         return
-                "    " + Colors.colored(Colors.ANSI_GREEN, "Personnage") + "\n" +
+                "    " + Colors.colstr(Colors.ANSI_GREEN, "Personnage") + "\n" +
                         "         Nom    = " + getName() + '\n' +
                         "         Type   = " + getTypeString() + '\n' +
                         "         ❤️     = " + getLife() + '\n' +

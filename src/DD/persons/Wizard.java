@@ -7,7 +7,10 @@ public class Wizard extends Person {
 
     public Wizard(String name) {
         super(name);
-//        this.type = PlayerType.WIZARD;
+        this.life = 6;
+        this.force = 15;
+        this.offensiveTool = new Spell(5, "Sort de ouf");
+        this.defensiveTool = new Philtre(5, "Philtre de ouf");
     }
 
     @Override

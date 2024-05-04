@@ -1,6 +1,6 @@
-package DD.board.spells;
+package DD.board.squares.spells;
 
-import DD.board.Square;
+import DD.board.squares.Square;
 
 public abstract class SquareSpell implements Square {
 //    @Override

@@ -2,17 +2,17 @@ package DD;
 
 public class Msg {
 
-    public static void red(String msg) {System.out.println( Colors.colored(Colors.ANSI_RED, msg)); }
-    public static void green(String msg) {
-        System.out.println( Colors.colored(Colors.ANSI_GREEN, msg));
+    public static void printRed(String msg) {System.out.println( Colors.colstr(Colors.ANSI_RED, msg)); }
+    public static void printGreen(String msg) {
+        System.out.println( Colors.colstr(Colors.ANSI_GREEN, msg));
     }
-    public static void blue(String msg) {
-        System.out.println( Colors.colored(Colors.ANSI_CYAN, msg));
+    public static void printBlue(String msg) { System.out.println( Colors.colstr(Colors.ANSI_CYAN, msg));
     }
-    public static void white(String msg) {
-        System.out.println( Colors.colored(Colors.ANSI_WHITE, msg));
+    public static void printWhite(String msg) {
+        System.out.println( Colors.colstr(Colors.ANSI_WHITE, msg));
     }
-    public static void rainbow(String msg) {System.out.println(Colors.rainbow(msg));}
+    public static void printRainbow(String msg) {System.out.println(Colors.rainbow(msg));}
+    public static String underlined(String msg) {return "\u001b[4m" + msg + "\u001b[0m";}
 
     // =======================
     // Print string inside box
@@ -47,13 +47,13 @@ public class Msg {
     public static void printBox(String... strings) {
         int maxBoxWidth = getMaxLength(strings);
         String line = "+" + fill('-', maxBoxWidth + 6) + "+";
-        rainbow(line);
+        printRainbow(line);
         System.out.printf("│   %s   │%n", padString(" ", maxBoxWidth));
         for (String str : strings) {
-            System.out.printf("│   %s   │%n", padString(str, maxBoxWidth));
+            System.out.printf("│   %s   │%n", Colors.colstr(Colors.ANSI_PURPLE, padString(str, maxBoxWidth)));
         }
         System.out.printf("│   %s   │%n", padString(" ", maxBoxWidth));
-        rainbow(line);
+        printRainbow(line);
         System.out.println();
     }
 

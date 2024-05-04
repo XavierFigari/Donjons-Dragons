@@ -7,6 +7,10 @@ public class Warrior extends Person {
 
     public Warrior(String name) {
         super(name);
+        this.life = 10;
+        this.force = 10;
+        this.offensiveTool = new Weapon(5, "Epée");
+        this.defensiveTool = new Shield(5, "Bouclier");
     }
 
     @Override

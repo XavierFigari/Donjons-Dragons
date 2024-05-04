@@ -15,7 +15,7 @@ public class Colors {
             {ANSI_PURPLE, ANSI_BLUE, ANSI_CYAN, ANSI_GREEN, ANSI_YELLOW, ANSI_RED};
 
 
-    public static String colored(String color, String text) {
+    public static String colstr(String color, String text) {
         return color + text + Colors.ANSI_RESET;
     }
 

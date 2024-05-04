@@ -1,6 +1,6 @@
-package DD.board.enemies;
+package DD.board.squares.enemies;
 
-import DD.board.Square;
+import DD.board.squares.Square;
 
 public abstract class SquareEnemy implements Square {
 //    @Override

@@ -1,6 +1,6 @@
-package DD.board.potions;
+package DD.board.squares.potions;
 
-import DD.board.Square;
+import DD.board.squares.Square;
 
 public abstract class SquarePotion implements Square {
 //    @Override

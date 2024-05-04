@@ -1,15 +1,17 @@
 package DD.board;
 
-import DD.board.enemies.SquareDragon;
-import DD.board.enemies.SquareGoblin;
-import DD.board.enemies.SquareSorcerer;
-import DD.board.potions.SquarePotionBig;
-import DD.board.potions.SquarePotionStd;
-import DD.board.spells.SquareFireball;
-import DD.board.spells.SquareLightning;
-import DD.board.weapons.SquareHammer;
-import DD.board.weapons.SquareSword;
-import DD.board.weapons.SquareWeapon;
+import DD.board.squares.Square;
+import DD.board.squares.SquareEmpty;
+import DD.board.squares.SquareSurprise;
+import DD.board.squares.enemies.SquareDragon;
+import DD.board.squares.enemies.SquareGoblin;
+import DD.board.squares.enemies.SquareSorcerer;
+import DD.board.squares.potions.SquarePotionBig;
+import DD.board.squares.potions.SquarePotionStd;
+import DD.board.squares.spells.SquareFireball;
+import DD.board.squares.spells.SquareLightning;
+import DD.board.squares.weapons.SquareHammer;
+import DD.board.squares.weapons.SquareSword;
 
 import java.util.List;
 

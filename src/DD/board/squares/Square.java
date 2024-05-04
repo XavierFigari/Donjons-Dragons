@@ -1,4 +1,4 @@
-package DD.board;
+package DD.board.squares;
 
 import DD.persons.Person;
 

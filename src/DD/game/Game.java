@@ -23,8 +23,7 @@ public class Game {
     public Game() {
         this.menu = new Menu();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.TEST); // C'est ici qu'on choisit le type de plateau
-        // on pourrait le passer en paramètre du constructeur
+        this.board = new Board(BoardType.IT5); // C'est ici qu'on choisit le type de plateau
         this.boardSize =  board.getSquares().size();
     }
 
@@ -77,9 +76,6 @@ public class Game {
             // Afficher les infos sur le coup joué
             menu.displayPlayerStatus(player, diceValue, newRealPosition);
 
-            System.out.println("Le personnage " + player.getName() + " est en position " + newRealPosition + ".");
-            System.out.println("Board size : " + boardSize);
-
             // Faire interagir le joueur avec le contenu de la case
             board.getSquare(newRealPosition).interact(player);
 
@@ -87,6 +83,9 @@ public class Game {
             if (newTheoricPosition > boardSize) {
                 menu.displayWinner(player);
                 throw new PersonOutOfBoard(player);
+            } else if (newRealPosition == boardSize) {
+                gameOver = true;
+                menu.displayWinner(player);
             }
 
         }
@@ -97,7 +96,7 @@ public class Game {
         public String playerName;
         public PersonOutOfBoard(Person player) {
             playerName = player.getName();
-            Msg.red("Le personnage " + player.getName() + " est sorti du plateau !");
+            Msg.printRed("Le personnage " + player.getName() + " est sorti du plateau !");
         }
     }
 

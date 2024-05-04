@@ -1,4 +1,4 @@
-package DD.board;
+package DD.board.squares;
 
 import DD.persons.Person;
 
@@ -10,6 +10,6 @@ public class SquareEmpty implements Square {
 
     @Override
     public void interact(Person person) {
-        System.out.println("Je suis un " + person.getType() + " et j'interagis avec une " + this);
+        System.out.println("Je suis un " + person.getTypeString() + " et j'interagis avec une " + this);
     }
 }
