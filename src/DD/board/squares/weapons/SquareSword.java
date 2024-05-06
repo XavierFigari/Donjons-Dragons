@@ -11,6 +11,9 @@ public class SquareSword implements Square {
 
     @Override
     public void interact(Person person) {
-        System.out.println("Je suis un " + person.getTypeString() + " et j'interagis avec une " + this);
+        // Epée : augmente l’attaque de 5 points
+        person.setForce(person.getForce()+5);
+        System.out.println(person.getTypeString() +
+                " est tombé sur une " + this + "! Elle lui fait gagner 5 points de force");
     }
 }

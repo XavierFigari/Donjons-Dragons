@@ -6,11 +6,13 @@ import DD.persons.Person;
 public class SquareHammer implements Square {
     @Override
     public String toString() {
-        return "marteau";
+        return "massue";
     }
 
     @Override
     public void interact(Person person) {
-        System.out.println("Je suis un " + person.getTypeString() + " et j'interagis avec un " + this);
+        // Massue : augmente l’attaque de 3 points
+        person.setForce(person.getForce()+3);
+        System.out.println(person.getTypeString() + " est tombé sur une " + this + "! Elle lui fait gagner 3 points de force");
     }
 }

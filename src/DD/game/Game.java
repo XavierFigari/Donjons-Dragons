@@ -23,7 +23,7 @@ public class Game {
     public Game() {
         this.menu = new Menu();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.IT5); // C'est ici qu'on choisit le type de plateau
+        this.board = new Board(BoardType.IT5,  this.menu); // C'est ici qu'on choisit le type de plateau
         this.boardSize =  board.getSquares().size();
     }
 
@@ -43,9 +43,8 @@ public class Game {
         while (!gameOver) {
             menu.displayTurnNumber(turnCount);
             try {
-                //----------------------------------
+                // Play
                 gameOver = gameTurn(players, board);
-                //----------------------------------
             } catch (PersonOutOfBoard player) {
                 System.out.println("Bon, on va dire que " + player.playerName + " a gagné.");
                 gameOver = true;
@@ -58,8 +57,10 @@ public class Game {
     // Méthode : jouer un tour
     private boolean gameTurn(List<Person> players, Board board) throws PersonOutOfBoard {
 
-        int diceValue, newTheoricPosition, newRealPosition;
+        int diceValue, newPosition;
+        String userMsg;
         boolean gameOver = false;
+        boolean outOfBoard = false;
 
         // Pour tous les joueurs :
         for (Person player : players) {
@@ -68,22 +69,22 @@ public class Game {
 
             diceValue = dice.throwDice();
 
-            newTheoricPosition = player.getPosition() + diceValue;
-            newRealPosition = Math.min(newTheoricPosition, boardSize);
+            outOfBoard = (player.getPosition() + diceValue) > boardSize;
+            newPosition = Math.min(player.getPosition() + diceValue, boardSize);
 
-            player.setPosition(newRealPosition);
+            player.setPosition(newPosition);
 
             // Afficher les infos sur le coup joué
-            menu.displayPlayerStatus(player, diceValue, newRealPosition);
+            menu.displayPlayerStatus(player, diceValue, newPosition);
 
             // Faire interagir le joueur avec le contenu de la case
-            board.getSquare(newRealPosition).interact(player);
+            board.getSquare(newPosition).interact(player);
 
             // Throw exception if new position is out of board
-            if (newTheoricPosition > boardSize) {
+            if (outOfBoard) {
                 menu.displayWinner(player);
                 throw new PersonOutOfBoard(player);
-            } else if (newRealPosition == boardSize) {
+            } else if (newPosition == boardSize) {
                 gameOver = true;
                 menu.displayWinner(player);
             }

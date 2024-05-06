@@ -1,5 +1,6 @@
 package DD.board;
 
+import DD.Menu;
 import DD.board.squares.Square;
 import DD.board.squares.SquareEmpty;
 import DD.board.squares.SquareSurprise;
@@ -17,9 +18,16 @@ import java.util.List;
 
 public class Board {
 
+    // Attributes
     private List<Square> squares;
+    private final Menu menu;
 
-    public Board(BoardType boardType) {
+
+    // Constructor
+    public Board(BoardType boardType, Menu menu) {
+
+        this.menu = menu;
+
         switch (boardType) {
             case TEST -> {
                 this.squares = List.of(     // List.of creates an immutable list
