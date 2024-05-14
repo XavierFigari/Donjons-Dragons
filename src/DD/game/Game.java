@@ -12,7 +12,7 @@ import java.util.List;
 public class Game {
 
     // Constant
-    private int boardSize;
+    private final int boardSize;
 
     // Attributes
     private final UserInterface ui;

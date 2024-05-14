@@ -18,7 +18,6 @@ public class SquareLightning extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         if (person instanceof DD.persons.Wizard) {
             ui.display("Tu as trouvé un éclair ! Ta force augmente de 2 points !");
             person.setStrength(person.getStrength() + 2);

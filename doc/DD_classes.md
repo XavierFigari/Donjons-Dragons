@@ -1,8 +1,6 @@
 ```mermaid
-
 classDiagram
- 
- 
+
     class Menu {
         +displayGameStart() : void
         +displayTurnNumber()
@@ -22,7 +20,7 @@ classDiagram
         <<abstract>>
         -String name
         -int life
-        -int force
+        -int strength
         -DefensiveTool defensiveTool
         -OffensiveTool offensiveTool
         -int position
@@ -44,45 +42,47 @@ classDiagram
         +getTypeString() : String
     }
 
-    class Arm {
-        +Arm(int power, String name)
+    class OffensiveTool {
+        <<abstract>>
+        -int attackLevel
+        +OffensiveTool()
+        +getAttackLevel() : int
     }
 
-    class Philtre {
-        +Philtre(int power, String name)
-    }
-
-    class Shield {
-        +Shield(int power, String name)
+    class Weapon {
+        +Weapon(int attackLevel, String name)
+        +Weapon()
     }
 
     class Spell {
-        +Spell(int power, String name)
-    }
-
-    class OffensiveTool {
-        <<abstract>>
-        -int power
-        -String name
+        +Spell(int attackLevel, String name)
     }
 
     class DefensiveTool {
         <<abstract>>
-        -int power
-        -String name
+        -int defenseLevel
+        +DefensiveTool()
+        +getDefenseLevel() : int
+    }
+
+    class Shield {
+        +Shield(int defenseLevel, String name)
+        +Shield()
+    }
+
+    class Philtre {
+        +Philtre(int defenseLevel, String name)
     }
 
     Game --> Menu : Uses
     Game --> Person : Uses
     Person <|-- Warrior
     Person <|-- Wizard
-    Warrior --> Arm : Uses
+    Warrior --> Weapon : Uses
     Warrior --> Shield : Uses
     Wizard --> Spell : Uses
     Wizard --> Philtre : Uses
-    Arm <|-- OffensiveTool
+    Weapon <|-- OffensiveTool
     Spell <|-- OffensiveTool
     Shield <|-- DefensiveTool
     Philtre <|-- DefensiveTool
-```
-

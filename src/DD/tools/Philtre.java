@@ -1,7 +1,8 @@
 package DD.tools;
 
 public class Philtre extends DefensiveTool {
-    public Philtre(int defenseLevel, String name) {
-        super(defenseLevel, name);
+    public Philtre() {
+        super();
+        this.defenseLevel = 2;
     }
 }

@@ -18,7 +18,6 @@ public class SquareHammer extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         if (person instanceof DD.persons.Warrior) {
             ui.display("Tu as trouvé une massue ! Ta force augmente de 3 points !");
             person.setStrength(person.getStrength() + 3);

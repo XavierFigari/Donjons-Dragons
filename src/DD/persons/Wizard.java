@@ -1,7 +1,7 @@
 package DD.persons;
 
+import DD.tools.Fireball;
 import DD.tools.Philtre;
-import DD.tools.Spell;
 
 public class Wizard extends Person {
 
@@ -9,8 +9,8 @@ public class Wizard extends Person {
         super(name);
         this.life = 6;
         this.strength = 15;
-        this.offensiveTool = new Spell(5, "Sort de ouf");
-        this.defensiveTool = new Philtre(5, "Philtre de ouf");
+        this.offensiveTool = new Fireball();
+        this.defensiveTool = new Philtre();
     }
 
     @Override
@@ -23,8 +23,8 @@ public class Wizard extends Person {
         super.reset();
         this.life = 6;
         this.strength = 15;
-        this.offensiveTool = new Spell(5, "Sort de ouf");
-        this.defensiveTool = new Philtre(5, "Philtre de ouf");
+        this.offensiveTool = new Fireball();
+        this.defensiveTool = new Philtre();
     }
 
     @Override

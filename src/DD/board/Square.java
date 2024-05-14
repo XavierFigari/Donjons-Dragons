@@ -13,8 +13,6 @@ public abstract class Square {
         this.ui = ui;
     }
 
-    public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        // ui.display("Je suis un " + person.getTypeString() + " et je suis tombé sur une case " + this + "\n");
-    }
+    public abstract void interact(Person person, UserInterface ui) throws PersonIsDeadException ;
 }
 

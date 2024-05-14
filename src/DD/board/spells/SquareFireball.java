@@ -18,7 +18,6 @@ public class SquareFireball extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         if (person instanceof DD.persons.Wizard) {
             ui.display("Tu as trouvé une boule de feu ! Ta force augmente de 7 points !");
             person.setStrength(person.getStrength() + 7);

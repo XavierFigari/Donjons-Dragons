@@ -58,7 +58,6 @@ public class UserInterface {
                 System.out.print("Entrez G ou M : ");
             }
         }
-        ;
         return textInput.equals("G") ? PlayerType.WARRIOR : PlayerType.WIZARD;
     }
 

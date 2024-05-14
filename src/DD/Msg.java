@@ -29,8 +29,7 @@ public class Msg {
         return len;
     }
     private static String padString(String str, int len) {
-        StringBuilder sb = new StringBuilder(str);
-        return sb.append(fill(' ', len - str.length())).toString();
+        return str + fill(' ', len - str.length());
     }
     private static String fill(char ch, int len) {
         StringBuilder sb = new StringBuilder(len);

@@ -18,7 +18,6 @@ public class SquarePotionBig extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         ui.display("Tu as trouvé une GRANDE potion magique ! Tu reprends 2 points de vie !");
         person.setLife(person.getLife() + 5);
         ui.display("Ton niveau de vie est maintenant de " + person.getLife() + " points.\n");

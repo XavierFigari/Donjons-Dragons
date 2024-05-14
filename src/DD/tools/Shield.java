@@ -1,7 +1,8 @@
 package DD.tools;
 
 public class Shield extends DefensiveTool {
-    public Shield(int defenseLevel, String name) {
-        super(defenseLevel, name);
+    public Shield() {
+        super();
+        this.defenseLevel = 2;
     }
 }

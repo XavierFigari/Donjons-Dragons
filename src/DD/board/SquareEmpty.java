@@ -17,7 +17,6 @@ public class SquareEmpty extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         ui.display("Bummer. T'es sur une case vide. Repose-toi, tu en auras besoin.");
     }
 }

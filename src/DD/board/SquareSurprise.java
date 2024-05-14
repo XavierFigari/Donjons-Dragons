@@ -48,7 +48,6 @@ public class SquareSurprise extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         ui.display("Tu as trouvé une caisse surprise ! Voyons-voir ce qu'elle contient...");
         square.interact(person, ui);
     }

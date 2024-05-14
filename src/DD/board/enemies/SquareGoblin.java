@@ -18,7 +18,6 @@ public class SquareGoblin extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
         ui.display("Un gobelin vous attaque !");
     }
 }
