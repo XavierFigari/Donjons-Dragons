@@ -10,6 +10,7 @@ public class Colors {
     public static String ANSI_PURPLE = "\u001B[35m";
     public static String ANSI_CYAN = "\u001B[36m";
     public static String ANSI_WHITE = "\u001B[37m";
+    public static String PURE_WHITE = "\u001B[97m";
 
     public static String[] rainbowColors =
             {ANSI_PURPLE, ANSI_BLUE, ANSI_CYAN, ANSI_GREEN, ANSI_YELLOW, ANSI_RED};

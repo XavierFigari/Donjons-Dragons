@@ -51,7 +51,8 @@ public class Game {
                 //----------------------------------
             } catch (PersonOutOfBoard currentPlayer) {
                 ui.display("Le personnage " + currentPlayer.playerName + " est sorti du plateau !");
-                ui.display("Bon, on va dire que " + currentPlayer.playerName + " a gagné.");
+                ui.display("Bon, on va dire qu'il a gagné.");
+                ui.displayWinner(currentPlayer.playerName);
                 gameOver = true;
             }
             turnCount++;
@@ -63,6 +64,7 @@ public class Game {
     private boolean gameTurn(List<Person> players, Board board) throws PersonOutOfBoard {
 
         int diceValue, newPosition;
+        boolean outOfBoard = false;
         boolean gameOver = false;
 
         // Pour tous les joueurs :
@@ -78,6 +80,7 @@ public class Game {
             diceValue = dice.throwDice();
 
             newPosition = Math.min(player.getPosition() + diceValue, boardSize);
+            outOfBoard = player.getPosition() + diceValue > boardSize;
 
             player.setPosition(newPosition);
 
@@ -92,11 +95,11 @@ public class Game {
             }
 
             // Throw exception if new position is out of board
-            if (player.getPosition() + diceValue > boardSize) {
+            if (outOfBoard) {
                 throw new PersonOutOfBoard(player);
             } else if (newPosition == boardSize) {
                 gameOver = true;
-                ui.displayWinner(player);
+                ui.displayWinner(player.getName());
             }
 
         }
@@ -106,7 +109,6 @@ public class Game {
     private class PersonOutOfBoard extends Exception {
         public String playerName;
         public PersonOutOfBoard(Person player) {
-            ui.displayWinner(player);
             playerName = player.getName();
         }
     }

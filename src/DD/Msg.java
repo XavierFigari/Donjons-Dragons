@@ -11,13 +11,16 @@ public class Msg {
     public static void printWhite(String msg) {
         System.out.println( Colors.colstr(Colors.ANSI_WHITE, msg));
     }
+    public static void printPureWhite(String info) {
+        System.out.println(Colors.colstr(Colors.PURE_WHITE, info));
+    }
     public static void printRainbow(String msg) {System.out.println(Colors.rainbow(msg));}
-    public static String underlined(String msg) {return "\u001b[4m" + msg + "\u001b[0m";}
 
+    public static String underlined(String msg) {return "\u001b[4m" + msg + "\u001b[0m";}
     // =======================
     // Print string inside box
-    // =======================
 
+    // =======================
     private static int getMaxLength(String... strings) {
         int len = Integer.MIN_VALUE;
         for (String str : strings) {
@@ -36,6 +39,7 @@ public class Msg {
         }
         return sb.toString();
     }
+
     /**
      * Finally, printBox is determining the length of the longest String.
      * Building a top (and bottom line) then iterating the String(s) performing padding
@@ -56,5 +60,4 @@ public class Msg {
         printRainbow(line);
         System.out.println();
     }
-
 }

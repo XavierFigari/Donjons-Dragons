@@ -20,11 +20,11 @@ public class UserInterface {
     }
 
     public void displayTurnNumber(int n) {
-        Msg.printBlue(Msg.underlined("\nTOUR DE JEU " + n + "\n"));
+        Msg.printBlue(Msg.underlined("\nTOUR DE JEU " + n));
     }
 
     public void display(String info) {
-        Msg.white(info);
+        Msg.printPureWhite(info);
     }
 
     private String dieEmoji(int dieVal) {
@@ -184,9 +184,9 @@ public class UserInterface {
         Msg.printBox(text);
     }
 
-    public void displayWinner(Person player) {
+    public void displayWinner(String playerName) {
         System.out.println();
-        Msg.printRainbow(player.getName() + " a gagné !");
+        Msg.printRainbow(playerName + " a gagné !");
         System.out.println();
     }
 

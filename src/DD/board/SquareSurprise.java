@@ -1,7 +1,6 @@
 package DD.board;
 
 import DD.UserInterface;
-import DD.board.enemies.SquareGoblin;
 import DD.board.potions.SquarePotionBig;
 import DD.board.potions.SquarePotionStd;
 import DD.board.spells.SquareFireball;
