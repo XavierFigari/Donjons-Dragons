@@ -11,7 +11,7 @@ public abstract class Person {
     protected String name;
     // available to children (protected) :
     protected int life;
-    protected int force;
+    protected int strength;
     protected DefensiveTool defensiveTool; // shield (warrior) or philtre (wizard)
     protected OffensiveTool offensiveTool; // arm (warrior) or spell (wizard)
     protected int position;
@@ -34,11 +34,11 @@ public abstract class Person {
     @Override
     public String toString() {
         return
-                "    " + Colors.colored(Colors.ANSI_GREEN, "Personnage") + "\n" +
-                        "         Nom    = " + getName() + '\n' +
+//                "    " + Colors.colored(Colors.ANSI_GREEN, "Personnage") + "\n" +
+                        "         Nom    = " + Colors.colored(Colors.ANSI_GREEN, getName()) + '\n' +
                         "         Type   = " + getTypeString() + '\n' +
                         "         ❤️     = " + getLife() + '\n' +
-                        "         \uD83D\uDCAA     = " + getForce() + '\n' ;
+                        "         \uD83D\uDCAA     = " + getStrength() + '\n' ;
     }
 
     // Getters
@@ -49,8 +49,8 @@ public abstract class Person {
     public int getLife() {
         return life;
     }
-    public int getForce() {
-        return force;
+    public int getStrength() {
+        return strength;
     }
     public int getPosition() { return position; }
 
@@ -60,14 +60,15 @@ public abstract class Person {
     // Setters
     // --------------------------------------------------------------------------
     public void setName(String name) { this.name = name; }
-//    public void setType(PlayerType type) { this.type = type; }
-    public void setLife(int life) {
-        this.life = life;
-    }
-    public void setForce(int force) {
-        this.force = force;
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
     public void setPosition(int position) { this.position = position; }
+
+    public void setLife(int life) throws PersonIsDeadException {
+        this.life = life;
+        if (life<0) throw new PersonIsDeadException(this);
+    }
 
 
 }

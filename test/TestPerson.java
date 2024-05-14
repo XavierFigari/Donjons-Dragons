@@ -15,17 +15,22 @@ public class TestPerson {
         Person p = new Warrior(name);
 
         p.setPosition(99);
-        p.setLife(98);
-        p.setForce(97);
+        try {
+            p.setLife(98);
+        } catch (Exception e) {
+            System.out.println("Error setting life");
+        }
+
+        p.setStrength(97);
         System.out.println(p.getName().equals(name));
         System.out.println(p.getPosition() == 99);
         System.out.println(p.getLife() == 98);
-        System.out.println(p.getForce() == 97);
+        System.out.println(p.getStrength() == 97);
 
         p.reset();
         System.out.println(p.getName().equals(name));
         System.out.println(p.getPosition() == 1);
         System.out.println(p.getLife() == 10);
-        System.out.println(p.getForce() == 10);
+        System.out.println(p.getStrength() == 10);
     }
 }

@@ -1,10 +1,11 @@
 package DD.game;
 
 import DD.board.Board;
-import DD.Menu;
+import DD.UserInterface;
 import DD.Msg;
 import DD.board.BoardType;
 import DD.persons.Person;
+import DD.persons.PersonIsDeadException;
 
 import java.util.List;
 
@@ -14,17 +15,16 @@ public class Game {
     private int boardSize;
 
     // Attributes
-    private final Menu menu;
+    private final UserInterface ui;
     List<Person> players;
     Board board;
     Dice dice;
 
     // Constructor
     public Game() {
-        this.menu = new Menu();
+        this.ui = new UserInterface();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.TEST); // C'est ici qu'on choisit le type de plateau
-        // on pourrait le passer en paramètre du constructeur
+        this.board = new Board(BoardType.NORMAL, ui); // C'est ici qu'on choisit le type de plateau
         this.boardSize =  board.getSquares().size();
     }
 
@@ -34,58 +34,65 @@ public class Game {
         boolean gameOver = false;
 
         // Greetings !
-        menu.printBox("DONJONS ET DRAGONS" );
+        ui.printBox("DONJONS ET DRAGONS" );
 
         // Create players !
-        players = menu.createPlayers();
+        players = ui.getPlayers();
 
         // Play !
-        menu.displayGameStart();
+        ui.displayGameStart();
+        ui.display("\nLe plateau comporte " + boardSize + " cases.\n");
+
         while (!gameOver) {
-            menu.displayTurnNumber(turnCount);
+            ui.displayTurnNumber(turnCount);
             try {
                 //----------------------------------
                 gameOver = gameTurn(players, board);
                 //----------------------------------
-            } catch (PersonOutOfBoard player) {
-                System.out.println("Bon, on va dire que " + player.playerName + " a gagné.");
+            } catch (PersonOutOfBoard currentPlayer) {
+                ui.display("Le personnage " + currentPlayer.playerName + " est sorti du plateau !");
+                ui.display("Bon, on va dire que " + currentPlayer.playerName + " a gagné.");
                 gameOver = true;
             }
             turnCount++;
         }
-        menu.endOfGameMenu();
+        ui.endOfGameMenu();
     }
 
     // Méthode : jouer un tour
     private boolean gameTurn(List<Person> players, Board board) throws PersonOutOfBoard {
 
-        int diceValue, newTheoricPosition, newRealPosition;
+        int diceValue, newPosition;
         boolean gameOver = false;
 
         // Pour tous les joueurs :
         for (Person player : players) {
 
-            menu.displayPlayerName(player);
+            if (player.getLife() <= 0 || player.getPosition() >= boardSize) {
+                continue;
+            }
+
+            ui.displayPlayerName(player);
+//            ui.askToThrowDice();
 
             diceValue = dice.throwDice();
 
-            newTheoricPosition = player.getPosition() + diceValue;
-            newRealPosition = Math.min(newTheoricPosition, boardSize);
+            newPosition = Math.min(player.getPosition() + diceValue, boardSize);
 
-            player.setPosition(newRealPosition);
+            player.setPosition(newPosition);
 
             // Afficher les infos sur le coup joué
-            menu.displayPlayerStatus(player, diceValue, newRealPosition);
-
-            System.out.println("Le personnage " + player.getName() + " est en position " + newRealPosition + ".");
-            System.out.println("Board size : " + boardSize);
+            ui.displayPlayerStatus(player, diceValue, newPosition);
 
             // Faire interagir le joueur avec le contenu de la case
-            board.getSquare(newRealPosition).interact(player);
+            try {
+                board.getSquare(newPosition).interact(player, ui);
+            } catch (PersonIsDeadException e) {
+                ui.display("Le personnage " + e.person.getName() + " est mort !");
+            }
 
             // Throw exception if new position is out of board
-            if (newTheoricPosition > boardSize) {
-                menu.displayWinner(player);
+            if (player.getPosition() + diceValue > boardSize) {
                 throw new PersonOutOfBoard(player);
             }
 
@@ -96,8 +103,8 @@ public class Game {
     private class PersonOutOfBoard extends Exception {
         public String playerName;
         public PersonOutOfBoard(Person player) {
+            ui.displayWinner(player);
             playerName = player.getName();
-            Msg.red("Le personnage " + player.getName() + " est sorti du plateau !");
         }
     }
 

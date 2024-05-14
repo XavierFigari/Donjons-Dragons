@@ -2,7 +2,7 @@ package DD.tools;
 
 enum WeaponType {
     SWORD,
-    CLUB
+    HAMMER
 }
 enum SpellType {
     FIREBALL,

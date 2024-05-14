@@ -1,15 +1,23 @@
 package DD.board;
 
+import DD.UserInterface;
 import DD.persons.Person;
+import DD.persons.PersonIsDeadException;
 
-public class SquareEmpty implements Square {
-    @Override
-    public String toString() {
-        return "Case vide";
+public class SquareEmpty extends Square {
+
+    public SquareEmpty(UserInterface ui) {
+        super(ui);
     }
 
     @Override
-    public void interact(Person person) {
-        System.out.println("Je suis un " + person.getType() + " et j'interagis avec une " + this);
+    public String toString() {
+        return "Vide";
+    }
+
+    @Override
+    public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
+        super.interact(person, ui);
+        ui.display("Bummer. T'es sur une case vide. Repose-toi, tu en auras besoin.");
     }
 }

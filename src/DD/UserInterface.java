@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu {
+public class UserInterface {
 
     private final Scanner sc = new Scanner(System.in);
 
@@ -20,7 +20,11 @@ public class Menu {
     }
 
     public void displayTurnNumber(int n) {
-        Msg.blue("****** TOUR DE JEU " + n + " ******\n");
+        Msg.blue("\n****** TOUR DE JEU " + n + " ******");
+    }
+
+    public void display(String info) {
+        Msg.white(info);
     }
 
     private String dieEmoji(int dieVal) {
@@ -35,7 +39,7 @@ public class Menu {
     }
 
     public void displayPlayerName(Person player) {
-        Msg.green("Joueur " + player.getName() + " (" + player.getTypeString() + ") : position " + player.getPosition());
+        Msg.green("\nJoueur " + player.getName() + " (" + player.getTypeString() + ") : position " + player.getPosition());
     }
 
     private String getPlayerName() {
@@ -58,7 +62,7 @@ public class Menu {
         return textInput.equals("G") ? PlayerType.WARRIOR : PlayerType.WIZARD;
     }
 
-    private Person createPlayer() {
+    private Person getPlayer() {
         System.out.println();
         System.out.println("Création d'un personnage");
         System.out.println("------------------------");
@@ -88,49 +92,6 @@ public class Menu {
             }
         }
     }
-
-//    private void displayPlayerMenu() {
-//        System.out.println(" ");
-//        System.out.println("   Que voulez-vous faire maintenant ?\n");
-//        System.out.println("   │ A. Afficher les personnages déjà créés");
-//        System.out.println("   │ M. Modifier le personnage qui vient d'être créé (le dernier)");
-//        System.out.println("   │ C. Créer un autre personnage");
-//        System.out.println("   │ R. Revenir au menu principal");
-//        System.out.println("   │ Q. Quitter le jeu");
-//        System.out.print("\n   Entrez A, M, C, R ou Q : ");
-//    }
-
-/*
-    private void playerMenu(List<Person> players) {
-        String answer;
-        do {
-            displayPlayerMenu();
-            answer = sc.nextLine();
-            switch (answer) {
-                case "A":
-//                    displayPlayer(players.getLast());
-                    displayAllPlayers(players);
-                    break;
-                case "M":
-                    players.remove(players.getLast());
-                    players.add(createPlayer());
-                    ;
-                    break;
-                case "C":
-                    players.add(createPlayer());
-                    break;
-                case "R":
-                    System.out.println("   Retour au menu principal :\n");
-                    break;
-                case "Q":
-                    quit();
-                    break;
-                default:
-                    System.out.println(Colors.colored(Colors.ANSI_RED, "   Ce choix n'est pas autorisé\n"));
-            }
-        } while (!answer.equals("R"));
-    }
-*/
 
 
     public void endOfGameMenu() {
@@ -166,11 +127,11 @@ public class Menu {
         Msg.blue("      MENU PRINCIPAL     ");
         System.out.println(" Que voulez-vous faire ? ");
         System.out.println("=========================");
-        System.out.println("   │ C. Créer un autre personnage");
-        System.out.println("   │ A. Afficher les personnages déjà créés");
-        System.out.println("   │ M. Modifier le dernier personnage créé");
-        System.out.println("   │ J. Jouer !");
-        System.out.println("   │ Q. Quitter le jeu");
+        System.out.println("│ C. Créer un personnage");
+        System.out.println("│ A. Afficher les personnages déjà créés");
+        System.out.println("│ M. Modifier le dernier personnage créé");
+        System.out.println("│ J. Jouer !");
+        System.out.println("│ Q. Quitter le jeu");
         System.out.print("\nEntrez C, A, M, J ou Q : ");
     }
 
@@ -179,7 +140,7 @@ public class Menu {
      *
      * @return List of <Person>, after the user chooses "J" (Jouer)
      */
-    public List<Person> createPlayers() {
+    public List<Person> getPlayers() {
         String answer;
         List<Person> players = new ArrayList<Person>();
 
@@ -189,9 +150,8 @@ public class Menu {
             switch (answer) {
                 case "C": // Create player
                     // Add player (interactively)
-                    players.add(createPlayer());
-                    // Call player menu to display or modify created player
-//                    playerMenu(players);
+                    players.add(getPlayer());
+                    displayPlayer(players.getLast());
                     break;
                 case "A": // Display players
                     displayAllPlayers(players);
@@ -202,8 +162,8 @@ public class Menu {
                                 "vous n'en avez pas créé !");
                         break;
                     }
-                    players.remove(players.size() - 1);
-                    players.add(createPlayer());
+                    players.removeLast();
+                    players.add(getPlayer());
                     break;
                 case "J": // Start Game
                     if (players.isEmpty()) {
@@ -212,6 +172,7 @@ public class Menu {
                                 "vous n'avez pas créé de joueur !");
                         break;
                     }
+                    // this is the only way to exit the loop :
                     return players;
                 case "Q":
                     quit();
