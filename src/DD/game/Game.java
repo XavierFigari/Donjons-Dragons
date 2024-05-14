@@ -46,7 +46,7 @@ public class Game {
         while (!gameOver) {
             ui.displayTurnNumber(turnCount);
             try {
-                //----------------------------------
+                // Play
                 gameOver = gameTurn(players, board);
                 //----------------------------------
             } catch (PersonOutOfBoard currentPlayer) {
@@ -94,6 +94,9 @@ public class Game {
             // Throw exception if new position is out of board
             if (player.getPosition() + diceValue > boardSize) {
                 throw new PersonOutOfBoard(player);
+            } else if (newPosition == boardSize) {
+                gameOver = true;
+                ui.displayWinner(player);
             }
 
         }

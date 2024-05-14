@@ -20,7 +20,7 @@ public class UserInterface {
     }
 
     public void displayTurnNumber(int n) {
-        Msg.blue("\n****** TOUR DE JEU " + n + " ******");
+        Msg.printBlue(Msg.underlined("\nTOUR DE JEU " + n + "\n"));
     }
 
     public void display(String info) {
@@ -33,13 +33,13 @@ public class UserInterface {
     }
 
     public void displayPlayerStatus(Person player, int diceValue, int newPosition) {
-        Msg.white("  Dé = " + diceValue + " " + dieEmoji(diceValue));
-        Msg.white("  Nouvelle position = " + newPosition);
+        Msg.printWhite("  Dé = " + diceValue + " " + dieEmoji(diceValue));
+        Msg.printWhite("  Nouvelle position = " + newPosition);
         System.out.println();
     }
 
     public void displayPlayerName(Person player) {
-        Msg.green("\nJoueur " + player.getName() + " (" + player.getTypeString() + ") : position " + player.getPosition());
+        Msg.printGreen("\nJoueur " + player.getName() + " (" + player.getTypeString() + ") : position " + player.getPosition());
     }
 
     private String getPlayerName() {
@@ -54,7 +54,7 @@ public class UserInterface {
         while (!textInput.equals("G") && !textInput.equals("M")) {
             textInput = sc.nextLine();
             if (!textInput.equals("G") && !textInput.equals("M")) {
-                System.out.println(Colors.colored(Colors.ANSI_RED, "Ce choix n'est pas autorisé\n"));
+                System.out.println(Colors.colstr(Colors.ANSI_RED, "Ce choix n'est pas autorisé\n"));
                 System.out.print("Entrez G ou M : ");
             }
         }
@@ -84,7 +84,7 @@ public class UserInterface {
 
     private void displayAllPlayers(List<Person> players) {
         if (players.isEmpty()) {
-            Msg.red("\nAucun joueur n'a été créé");
+            Msg.printRed("\nAucun joueur n'a été créé\n");
         } else {
             System.out.println("\nNombre de Joueurs : " + players.size() + "\n");
             for (Person player : players) {
@@ -114,19 +114,14 @@ public class UserInterface {
                     System.out.println("\nOn recommence tout !");
                     break;
                 default:
-                    Msg.red("Ce choix n'est pas autorisé\n");
+                    Msg.printRed("Ce choix n'est pas autorisé\n");
             }
         } while (!answer.equals("R"));
     }
 
 
     private void displayMainMenu() {
-        System.out.println("=========================");
-//        System.out.println("      MENU PRINCIPAL     ");
-//        Msg.blue("\u001b[1m" + "      MENU PRINCIPAL     " + "\u001b[0m");
-        Msg.blue("      MENU PRINCIPAL     ");
-        System.out.println(" Que voulez-vous faire ? ");
-        System.out.println("=========================");
+        Msg.printBlue(Msg.underlined("MENU PRINCIPAL"));
         System.out.println("│ C. Créer un personnage");
         System.out.println("│ A. Afficher les personnages déjà créés");
         System.out.println("│ M. Modifier le dernier personnage créé");
@@ -158,18 +153,19 @@ public class UserInterface {
                     break;
                 case "M": // Modify player
                     if (players.isEmpty()) {
-                        Msg.red("Vous ne pouvez pas modifier un joueur tant que " +
-                                "vous n'en avez pas créé !");
+                        Msg.printRed("\nVous ne pouvez pas modifier un joueur tant que " +
+                                "vous n'en avez pas créé !\n");
                         break;
                     }
                     players.removeLast();
                     players.add(getPlayer());
+                    displayPlayer(players.getLast());
                     break;
                 case "J": // Start Game
                     if (players.isEmpty()) {
                         // Créer d'abord
-                        Msg.red("Vous ne pouvez pas jouer tant que " +
-                                "vous n'avez pas créé de joueur !");
+                        Msg.printRed("\nVous ne pouvez pas jouer tant que " +
+                                "vous n'avez pas créé de joueur !\n");
                         break;
                     }
                     // this is the only way to exit the loop :
@@ -177,7 +173,7 @@ public class UserInterface {
                 case "Q":
                     quit();
                 default:
-                    Msg.red("Ce choix n'est pas autorisé\n");
+                    Msg.printRed("Ce choix n'est pas autorisé\n");
             }
         } while (true);
 
@@ -190,7 +186,7 @@ public class UserInterface {
 
     public void displayWinner(Person player) {
         System.out.println();
-        Msg.rainbow(player.getName() + " a gagné !");
+        Msg.printRainbow(player.getName() + " a gagné !");
         System.out.println();
     }
 

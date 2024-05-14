@@ -35,7 +35,7 @@ public abstract class Person {
     public String toString() {
         return
 //                "    " + Colors.colored(Colors.ANSI_GREEN, "Personnage") + "\n" +
-                        "         Nom    = " + Colors.colored(Colors.ANSI_GREEN, getName()) + '\n' +
+                        "         Nom    = " + Colors.colstr(Colors.ANSI_GREEN, getName()) + '\n' +
                         "         Type   = " + getTypeString() + '\n' +
                         "         ❤️     = " + getLife() + '\n' +
                         "         \uD83D\uDCAA     = " + getStrength() + '\n' ;

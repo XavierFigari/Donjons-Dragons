@@ -15,9 +15,11 @@ import java.util.List;
 
 public class Board {
 
+    // Attributes
     private final UserInterface ui;
     private List<Square> squares;
 
+    // Constructor
     public Board(BoardType boardType, UserInterface ui) {
         this.ui = ui;
         switch (boardType) {
