@@ -12,7 +12,7 @@ import java.util.List;
 public class Game {
 
     // Constant
-    private final int boardSize;
+    private int boardSize;
 
     // Attributes
     private final UserInterface ui;
@@ -24,8 +24,6 @@ public class Game {
     public Game() {
         this.ui = new UserInterface();
         this.dice = new DiceOne(); // NormalDice();
-        this.board = new Board(BoardType.NORMAL, ui); // C'est ici qu'on choisit le type de plateau
-        this.boardSize =  board.getSquares().size();
     }
 
     // Method : play
@@ -38,6 +36,11 @@ public class Game {
 
         // Create players !
         players = ui.getPlayers();
+
+        // Create board : pass the players to the board to set
+        // the allowed persons for each square
+        this.board = new Board(BoardType.NORMAL, ui, players); // C'est ici qu'on choisit le type de plateau
+        this.boardSize =  board.getSquares().size();
 
         // Play !
         ui.displayGameStart();

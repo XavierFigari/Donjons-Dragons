@@ -1,15 +1,27 @@
 package DD.persons;
 
+import DD.tools.Axe;
 import DD.tools.Sword;
 import DD.tools.Shield;
+
+import java.util.Random;
 
 public class Warrior extends Person {
 
     public Warrior(String name) {
         super(name);
-        this.life = 10;
+        Random random = new Random();
+        // The life of a warrior is between 5 and 10
+        this.life = 5 + random.nextInt(6);
         this.strength = 10;
-        this.offensiveTool = new Sword();
+        switch (random.nextInt(2)) {
+            case 0:
+                this.offensiveTool = new Sword();
+                break;
+            case 1:
+                this.offensiveTool = new Axe();
+                break;
+        }
         this.defensiveTool = new Shield();
     }
 

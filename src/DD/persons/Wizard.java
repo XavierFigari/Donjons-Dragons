@@ -3,11 +3,14 @@ package DD.persons;
 import DD.tools.Fireball;
 import DD.tools.Philtre;
 
+import java.util.Random;
+
 public class Wizard extends Person {
 
     public Wizard(String name) {
         super(name);
-        this.life = 6;
+        // The life of a warrior is between 3 and 6
+        this.life = 3 + (int) new Random().nextInt(2);
         this.strength = 15;
         this.offensiveTool = new Fireball();
         this.defensiveTool = new Philtre();

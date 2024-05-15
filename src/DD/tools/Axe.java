@@ -1,14 +1,14 @@
 package DD.tools;
 
-public class Hammer extends OffensiveTool {
+public class Axe extends OffensiveTool {
 
-    public Hammer() {
+    public Axe() {
         super();
         this.attackLevel = 3;
     }
 
     @Override
     public String toString() {
-        return "une massue";
+        return "une hache \uD83E\uDE93";
     }
 }

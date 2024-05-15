@@ -9,6 +9,6 @@ public class Sword extends OffensiveTool {
 
     @Override
     public String toString() {
-        return "une épée";
+        return "une épée \uD83D\uDDE1";
     }
 }

@@ -5,4 +5,8 @@ public class Lightning extends OffensiveTool {
         super();
         this.attackLevel = 2;
     }
+    @Override
+    public String toString() {
+        return "un éclair ⚡️";
+    }
 }
