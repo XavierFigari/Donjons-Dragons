@@ -2,11 +2,14 @@ import DD.Msg;
 import DD.UserInterface;
 import DD.board.Board;
 import DD.board.BoardType;
+import DD.board.Square;
 import DD.persons.Person;
 import DD.persons.Warrior;
 import DD.persons.Wizard;
 
 import java.util.List;
+
+import static java.lang.System.exit;
 
 public class TestInteract {
 
@@ -26,7 +29,13 @@ public class TestInteract {
                 new Wizard("Wizard 3")
         );
 
-        Board board = new Board(BoardType.NORMAL, ui, players);
+        Board board = new Board(BoardType.RANDOM, ui, players);
+        int j=1;
+        for (Square square : board.getSquares()) {
+            System.out.println(j + " : " + square.toString());
+            j++;
+        }
+//        exit(0);
 
         for (int i = 1; i < board.getSquares().size(); i++) {
             for (Person player : players) {

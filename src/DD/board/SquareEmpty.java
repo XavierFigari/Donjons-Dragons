@@ -12,7 +12,7 @@ public class SquareEmpty extends Square {
 
     @Override
     public String toString() {
-        return "Vide";
+        return "Case Vide";
     }
 
     @Override

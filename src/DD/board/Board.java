@@ -14,25 +14,55 @@ import DD.persons.Person;
 import DD.persons.Warrior;
 import DD.persons.Wizard;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+enum BoardSize {
+    SMALL(64),
+    MEDIUM(100),
+    LARGE(144);
+
+    private final int size;
+
+    BoardSize(int size) {
+        this.size = size;
+    }
+
+    public int getSize() {
+        return size;
+    }
+}
+
 
 public class Board {
 
-    private List<Square> squares;
+    private final List<Square> squares;
+
+    public List<Square> getSquares() {
+        return squares;
+    }
+
+    public Square getSquare(int position) {
+        return squares.get(position - 1); // because ArrayList index starts at 0
+    }
 
     // Constructor
     public Board(BoardType boardType, UserInterface ui, List<Person> players) {
+
+        this.squares = new ArrayList<>();
+
         List<Person> warriors = players.stream()
                 .filter(p -> p instanceof Warrior)
                 .toList();
-        
+
         List<Person> wizards = players.stream()
                 .filter(p -> p instanceof Wizard)
                 .toList();
 
         switch (boardType) {
             case TEST -> {
-                this.squares = List.of(     // List.of creates an immutable list
+                this.squares.addAll(List.of(     // List.of creates an immutable list
 //                        new SquareSword(ui, warriors),
 //                        new SquareAxe(ui, warriors),
                         new SquareLightning(ui, wizards), // 1
@@ -43,18 +73,18 @@ public class Board {
 //                        new SquareDragon(ui),
 //                        new SquareGoblin(ui),
                         new SquareSorcerer(ui)
-                );
+                ));
             }
             case IT4 -> {
-                this.squares = List.of(     // List.of creates an immutable list
+                this.squares.addAll(List.of(     // List.of creates an immutable list
                         new SquareEmpty(ui),
                         new SquareDragon(ui),
                         new SquareSword(ui, warriors),
                         new SquarePotionStd(ui)
-                );
+                ));
             }
             case IT5 -> {
-                this.squares = List.of(
+                this.squares.addAll(List.of(
                         new SquareDragon(ui),
                         new SquareEmpty(ui),
                         new SquareGoblin(ui),
@@ -65,10 +95,10 @@ public class Board {
                         new SquareLightning(ui, wizards),
                         new SquareAxe(ui, warriors),
                         new SquareSword(ui, warriors)
-                );
+                ));
             }
             case NORMAL -> {
-                this.squares = List.of(
+                this.squares.addAll(List.of(
                         new SquareLightning(ui, wizards), // 1
                         new SquareAxe(ui, warriors), // 2
                         new SquareGoblin(ui), // 3
@@ -133,16 +163,25 @@ public class Board {
                         new SquareDragon(ui), // 62
                         new SquareEmpty(ui),
                         new SquareEmpty(ui)
-                );
+                ));
             }
+            case RANDOM -> {
+                squares.addAll(Collections.nCopies(10, new SquareGoblin(ui)));
+                squares.addAll(Collections.nCopies(10, new SquareSorcerer(ui)));
+                squares.addAll(Collections.nCopies(4, new SquareDragon(ui)));
+                squares.addAll(Collections.nCopies(6, new SquarePotionStd(ui)));
+                squares.addAll(Collections.nCopies(2, new SquarePotionBig(ui)));
+                squares.addAll(Collections.nCopies(2, new SquareFireball(ui, wizards)));
+                squares.addAll(Collections.nCopies(4, new SquareLightning(ui, wizards)));
+                squares.addAll(Collections.nCopies(5, new SquareAxe(ui, warriors)));
+                squares.addAll(Collections.nCopies(4, new SquareSword(ui, warriors)));
+                squares.addAll(Collections.nCopies(17, new SquareEmpty(ui)));
+
+                Collections.shuffle(squares);
+            }
+
         }
     }
-
-    public List<Square> getSquares() {
-        return squares;
-    }
-
-    public Square getSquare(int position) {
-        return squares.get(position - 1); // because ArrayList index starts at 0
-    }
 }
+
+

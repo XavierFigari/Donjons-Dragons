@@ -13,7 +13,7 @@ public class SquarePotionStd extends Square {
 
     @Override
     public String toString() {
-        return "potion standard";
+        return "Case potion standard";
     }
 
     @Override

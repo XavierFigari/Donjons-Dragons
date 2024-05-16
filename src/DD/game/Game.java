@@ -39,7 +39,7 @@ public class Game {
 
         // Create board : pass the players to the board to set
         // the allowed persons for each square
-        this.board = new Board(BoardType.NORMAL, ui, players); // C'est ici qu'on choisit le type de plateau
+        this.board = new Board(BoardType.RANDOM, ui, players); // C'est ici qu'on choisit le type de plateau
         this.boardSize =  board.getSquares().size();
 
         // Play !

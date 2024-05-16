@@ -13,7 +13,7 @@ public class SquareDragon extends Square {
 
     @Override
     public String toString() {
-        return "Dragon";
+        return "Case Dragon";
     }
 
     @Override
