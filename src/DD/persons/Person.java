@@ -53,18 +53,19 @@ public abstract class Person {
     }
 
     public void fight(Enemy enemy, UserInterface ui) throws PersonIsDeadException {
-        ui.display("- Tu attaques " + enemy.getName() + ", qui a une force de " + enemy.getStrength() + " points.");
         ui.display("- Ta force \uD83D\uDCAA = " + this.getStrength() + " points. Ta vie ❤️ = " + this.getLife() + " points.");
+        ui.display("- Tu attaques " + enemy.getName() + " (\uD83D\uDCAA " + enemy.getStrength() + " ❤️ " + enemy.getLife() + ")." );
         if (this.offensiveTool != null) {
             ui.display("- Tu utilises " + this.offensiveTool + ", ce qui te donne une force totale de " + this.getTotalStrength() + " points.");
         }
-        // Lower the enemy's strength
-        enemy.setStrength(enemy.getStrength() - this.getTotalStrength());
+        // Lower the enemy's life : substraction of the total strength of the player
+        enemy.setLife(enemy.getLife() - this.getTotalStrength());
+
         // Test if the enemy is dead
-        if (enemy.getStrength() <= 0) {
+        if (enemy.getLife() <= 0) {
             ui.display("Tu as vaincu " + enemy.getName() + " ! Il s'effondre à terre, mort.");
         } else {
-            // He's not dead, he's fighting back
+            // He's not dead, he's fighting back !
             ui.display("Tu as infligé " + this.getTotalStrength() + " points de dégâts à " + enemy.getName() + ".\n" +
                     enemy.getName() + " a encore " + enemy.getLife() + " points de vie ❤️.");
             ui.displayRed(enemy.getName() + " riposte ! Il a une force \uD83D\uDCAA de " + enemy.getStrength() + " points.");
@@ -133,7 +134,8 @@ public abstract class Person {
 
     public void setLife(int life) throws PersonIsDeadException {
         this.life = life;
-        if (life <= 0) throw new PersonIsDeadException(this);
+        // DONE IN WIZARD AND WARRIOR NOW (otherwise, it would apply to enemies too)
+//        if (life <= 0) throw new PersonIsDeadException(this);
     }
 
     public void setDefensiveTool(DefensiveTool defensiveTool) {

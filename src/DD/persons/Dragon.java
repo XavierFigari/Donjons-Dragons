@@ -4,7 +4,7 @@ public class Dragon extends Enemy {
 
     public Dragon(String name) {
         super(name);
-        this.life = 15;
+        this.life = 20;
         this.strength = 4;
     }
 

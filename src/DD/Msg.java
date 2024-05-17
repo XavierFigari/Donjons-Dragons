@@ -1,5 +1,7 @@
 package DD;
 
+import java.util.Objects;
+
 public class Msg {
 
     public static void printRed(String msg) {System.out.println( Colors.colstr(Colors.ANSI_RED, msg)); }
@@ -46,16 +48,24 @@ public class Msg {
      *
      * @param strings
      */
-    public static void printBox(String... strings) {
+    public static void printBox(String color, String... strings) {
         int maxBoxWidth = getMaxLength(strings);
         String line = "+" + fill('-', maxBoxWidth + 6) + "+";
-        printRainbow(line);
-        System.out.printf("│   %s   │%n", padString(" ", maxBoxWidth));
-        for (String str : strings) {
-            System.out.printf("│   %s   │%n", Colors.colstr(Colors.ANSI_PURPLE, padString(str, maxBoxWidth)));
+        if (Objects.equals(color, Colors.RAINBOW)) {
+            printRainbow(line);
+        } else {
+            System.out.println(Colors.colstr(color, line));
         }
         System.out.printf("│   %s   │%n", padString(" ", maxBoxWidth));
-        printRainbow(line);
+        for (String str : strings) {
+            System.out.printf("│   %s   │%n", Colors.colstr(color.equals(Colors.RAINBOW)?Colors.ANSI_PURPLE:color, padString(str, maxBoxWidth)));
+        }
+        System.out.printf("│   %s   │%n", padString(" ", maxBoxWidth));
+        if (Objects.equals(color, Colors.RAINBOW)) {
+            printRainbow(line);
+        } else {
+            System.out.println(Colors.colstr(color, line));
+        }
         System.out.println();
     }
 }

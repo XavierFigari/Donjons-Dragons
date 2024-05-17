@@ -40,4 +40,11 @@ public class Warrior extends Person {
         return "Guerrier \uD83E\uDD77";
     }
 
+    @Override
+    public void setLife(int life) throws PersonIsDeadException {
+        super.setLife(life);
+        if (life <= 0) throw new PersonIsDeadException(this);
+    }
+
+
 }

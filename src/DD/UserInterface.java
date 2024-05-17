@@ -14,7 +14,7 @@ public class UserInterface {
     private final Scanner sc = new Scanner(System.in);
 
     public void displayGameStart() {
-       Msg.printBox("Le jeu démarre !");
+       Msg.printBox(Colors.ANSI_GREEN,"Le jeu démarre !");
     }
 
     public void displayGameOver() {
@@ -195,8 +195,8 @@ public class UserInterface {
 //        return null;
     }
 
-    public void printBox(String text) {
-        Msg.printBox(text);
+    public void printBox(String color, String text) {
+        Msg.printBox(color, text);
     }
 
     public void displayWinner(String playerName) {

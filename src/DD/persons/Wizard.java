@@ -30,4 +30,10 @@ public class Wizard extends Person {
         return "Magicien \uD83E\uDDD9";
     }
 
+    @Override
+    public void setLife(int life) throws PersonIsDeadException {
+        super.setLife(life);
+        if (life <= 0) throw new PersonIsDeadException(this);
+    }
+
 }

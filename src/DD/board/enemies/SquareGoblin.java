@@ -14,6 +14,9 @@ public class SquareGoblin extends SquareEnemy {
 
     public SquareGoblin(UserInterface ui) {
         super(ui);
+        List<String> goblinNames = List.of("Zasar", "Tyyrro", "Warryn", "Wiwyrholdalphiax");
+        String name = goblinNames.get(new Random().nextInt(goblinNames.size()));
+        enemy = new Goblin(name);
     }
 
     @Override
@@ -23,10 +26,6 @@ public class SquareGoblin extends SquareEnemy {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        List<String> goblinNames = List.of("Zasar", "Tyyrro", "Warryn", "Wiwyrholdalphiax");
-        Random random = new Random();
-        String name = goblinNames.get(random.nextInt(goblinNames.size()));
-        enemy = new Goblin(name);
         super.interact(person, ui);
     }
 }

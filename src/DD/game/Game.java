@@ -1,5 +1,6 @@
 package DD.game;
 
+import DD.Colors;
 import DD.board.Board;
 import DD.UserInterface;
 import DD.Msg;
@@ -36,18 +37,18 @@ public class Game {
         boolean gameOver = false;
 
         // Greetings !
-        ui.printBox("DONJONS ET DRAGONS" );
+        ui.printBox(Colors.RAINBOW, "DONJONS ET DRAGONS" );
 
         // Create players !
         // players = ui.getPlayers();
 
         players = new ArrayList<>(Arrays.asList(
-                new Warrior("Warrior 1"),
+                new Warrior("Cacaprout"),
 //                new Wizard("Wizard 1"),
 //                new Wizard("Wizard 2"),
 //                new Warrior("Warrior 2"),
 //                new Warrior("Warrior 3"),
-                new Wizard("Wizard 3")
+                new Wizard("Cuicui")
         ));
 
 
@@ -111,7 +112,7 @@ public class Game {
             try {
                 board.getSquare(newPosition).interact(player, ui);
             } catch (PersonIsDeadException e) {
-                ui.printBox(e.person.getName() + ", tu es mort ! Tu seras ressuscité à la prochaine partie.");
+                ui.printBox(Colors.ANSI_GREEN, e.person.getName() + ", tu es mort ! Tu seras ressuscité à la prochaine partie.");
                 players.remove(player);
             }
 
