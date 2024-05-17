@@ -6,8 +6,8 @@ public class Msg {
     public static void printGreen(String msg) {
         System.out.println( Colors.colstr(Colors.ANSI_GREEN, msg));
     }
-    public static void printBlue(String msg) { System.out.println( Colors.colstr(Colors.ANSI_CYAN, msg));
-    }
+    public static void printYellow(String msg) { System.out.println( Colors.colstr(Colors.ANSI_YELLOW, msg));}
+    public static void printBlue(String msg) { System.out.println( Colors.colstr(Colors.ANSI_CYAN, msg)); }
     public static void printWhite(String msg) {
         System.out.println( Colors.colstr(Colors.ANSI_WHITE, msg));
     }

@@ -1,11 +1,13 @@
 package DD.persons;
 
+import java.util.Random;
+
 public class Sorcerer extends Enemy {
 
     public Sorcerer(String name) {
         super(name);
         this.life = 9;
-        this.strength = 2;
+        this.strength = 4 + (int) new Random().nextInt(2);
     }
 
     @Override

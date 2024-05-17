@@ -9,6 +9,8 @@ import DD.persons.PersonIsDeadException;
 import DD.persons.Warrior;
 import DD.persons.Wizard;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Game {
@@ -39,19 +41,17 @@ public class Game {
         // Create players !
         // players = ui.getPlayers();
 
-        players = List.of(
+        players = new ArrayList<>(Arrays.asList(
                 new Warrior("Warrior 1"),
-                new Wizard("Wizard 1"),
-                new Wizard("Wizard 2"),
-                new Warrior("Warrior 2"),
-                new Warrior("Warrior 3"),
+//                new Wizard("Wizard 1"),
+//                new Wizard("Wizard 2"),
+//                new Warrior("Warrior 2"),
+//                new Warrior("Warrior 3"),
                 new Wizard("Wizard 3")
-        );
+        ));
 
 
-
-        // Create board : pass the players to the board to set
-        // the allowed persons for each square
+        // Create board : pass the players to the board, to set the allowed persons for each square
         this.board = new Board(BoardType.RANDOM, ui, players); // C'est ici qu'on choisit le type de plateau
         this.boardSize =  board.getSquares().size();
 
@@ -84,7 +84,11 @@ public class Game {
         boolean gameOver = false;
 
         // Pour tous les joueurs :
-        for (Person player : players) {
+        for (int i = 0; i < players.size(); i++) {
+
+//        for (Person player : players) {   // Ne marche pas car on supprime des éléments de la liste dans la boucle
+
+            Person player = players.get(i);
 
             if (player.getLife() <= 0 || player.getPosition() >= boardSize) {
                 continue;
@@ -107,7 +111,8 @@ public class Game {
             try {
                 board.getSquare(newPosition).interact(player, ui);
             } catch (PersonIsDeadException e) {
-                ui.display("Le personnage " + e.person.getName() + " est mort !");
+                ui.printBox(e.person.getName() + ", tu es mort ! Tu seras ressuscité à la prochaine partie.");
+                players.remove(player);
             }
 
             // Throw exception if new position is out of board
@@ -118,6 +123,11 @@ public class Game {
                 ui.displayWinner(player.getName());
             }
 
+        }
+        if (players.isEmpty()) {
+            ui.display("Tous les joueurs sont morts !");
+            ui.displayGameOver();
+            gameOver = true;
         }
         return gameOver;
     }

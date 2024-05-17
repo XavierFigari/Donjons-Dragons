@@ -23,7 +23,7 @@ public class SquareGoblin extends SquareEnemy {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        List<String> goblinNames = List.of("Zasar", "Tyyrro", "Warryn Beren", "Wiwyrholdalphiax Perra");
+        List<String> goblinNames = List.of("Zasar", "Tyyrro", "Warryn", "Wiwyrholdalphiax");
         Random random = new Random();
         String name = goblinNames.get(random.nextInt(goblinNames.size()));
         enemy = new Goblin(name);

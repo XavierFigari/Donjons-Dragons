@@ -54,20 +54,24 @@ public abstract class Person {
 
     public void fight(Enemy enemy, UserInterface ui) throws PersonIsDeadException {
         ui.display("- Tu attaques " + enemy.getName() + ", qui a une force de " + enemy.getStrength() + " points.");
-        ui.display("- Tu as une force de " + this.getStrength() + " points.") ;
+        ui.display("- Ta force \uD83D\uDCAA = " + this.getStrength() + " points. Ta vie ❤️ = " + this.getLife() + " points.");
         if (this.offensiveTool != null) {
             ui.display("- Tu utilises " + this.offensiveTool + ", ce qui te donne une force totale de " + this.getTotalStrength() + " points.");
         }
+        // Lower the enemy's strength
         enemy.setStrength(enemy.getStrength() - this.getTotalStrength());
+        // Test if the enemy is dead
         if (enemy.getStrength() <= 0) {
             ui.display("Tu as vaincu " + enemy.getName() + " ! Il s'effondre à terre, mort.");
         } else {
+            // He's not dead, he's fighting back
             ui.display("Tu as infligé " + this.getTotalStrength() + " points de dégâts à " + enemy.getName() + ".\n" +
-                    enemy.getName() + " a encore " + enemy.getStrength() + " points de vie.");
-            ui.display(enemy.getName() + " riposte !");
-            this.setLife(this.getLife() - enemy.getStrength());
-            ui.display("Tu as perdu " + enemy.getStrength() + " points de vie.\n" +
-                    "Il te reste " + this.getLife() + " points de vie.");
+                    enemy.getName() + " a encore " + enemy.getLife() + " points de vie ❤️.");
+            ui.displayRed(enemy.getName() + " riposte ! Il a une force \uD83D\uDCAA de " + enemy.getStrength() + " points.");
+            int newLife = this.getLife() - Math.min(enemy.getStrength(), this.getLife());
+            ui.display("Tu as perdu " + Math.min(enemy.getStrength(), this.getLife()) + " points de vie.\n" +
+                    (newLife>0?"Il te reste " + newLife + " points de vie ❤️.":"\n\uD83D\uDC80 Tu es mort.\n") );
+            this.setLife(newLife); // throw exception if life <= 0
         }
     }
 
@@ -129,7 +133,7 @@ public abstract class Person {
 
     public void setLife(int life) throws PersonIsDeadException {
         this.life = life;
-        if (life < 0) throw new PersonIsDeadException(this);
+        if (life <= 0) throw new PersonIsDeadException(this);
     }
 
     public void setDefensiveTool(DefensiveTool defensiveTool) {

@@ -14,9 +14,20 @@ public class UserInterface {
     private final Scanner sc = new Scanner(System.in);
 
     public void displayGameStart() {
-        System.out.println("\n########################################\n");
-        System.out.println("               Le jeu démarre !");
-        System.out.println("\n########################################\n");
+       Msg.printBox("Le jeu démarre !");
+    }
+
+    public void displayGameOver() {
+
+
+        Msg.printRainbow("╔═══════════════════════════════╗");
+        Msg.printRainbow("║                               ║");
+        Msg.printRainbow("║  ╔═╗╔═╗╔╦╗╔═╗  ╔═╗╦  ╦╔═╗╦═╗  ║");
+        Msg.printRainbow("║  ║ ╦╠═╣║║║║╣   ║ ║╚╗╔╝║╣ ╠╦╝  ║");
+        Msg.printRainbow("║  ╚═╝╩ ╩╩ ╩╚═╝  ╚═╝ ╚╝ ╚═╝╩╚═  ║");
+        Msg.printRainbow("║                               ║");
+        Msg.printRainbow("╚═══════════════════════════════╝");
+
     }
 
     public void displayTurnNumber(int n) {
@@ -37,13 +48,14 @@ public class UserInterface {
     }
 
     public void displayPlayerStatus(Person player, int diceValue, int newPosition) {
-        Msg.printWhite("  Dé = " + diceValue + " " + dieEmoji(diceValue));
-        Msg.printWhite("  Nouvelle position = " + newPosition);
+        Msg.printYellow("  Dé = " + diceValue + " " + dieEmoji(diceValue));
+        Msg.printYellow("  Nouvelle position = " + newPosition);
         System.out.println();
     }
 
     public void displayPlayerName(Person player) {
-        Msg.printGreen("\nJoueur " + player.getName() + " (" + player.getTypeString() + ") : position " + player.getPosition());
+        Msg.printGreen("\n" + player.getName() + " est en position " + player.getPosition());
+        System.out.println(player);
     }
 
     private String getPlayerName() {
