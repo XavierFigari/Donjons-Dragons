@@ -6,6 +6,8 @@ import DD.Msg;
 import DD.board.BoardType;
 import DD.persons.Person;
 import DD.persons.PersonIsDeadException;
+import DD.persons.Warrior;
+import DD.persons.Wizard;
 
 import java.util.List;
 
@@ -35,7 +37,18 @@ public class Game {
         ui.printBox("DONJONS ET DRAGONS" );
 
         // Create players !
-        players = ui.getPlayers();
+        // players = ui.getPlayers();
+
+        players = List.of(
+                new Warrior("Warrior 1"),
+                new Wizard("Wizard 1"),
+                new Wizard("Wizard 2"),
+                new Warrior("Warrior 2"),
+                new Warrior("Warrior 3"),
+                new Wizard("Wizard 3")
+        );
+
+
 
         // Create board : pass the players to the board to set
         // the allowed persons for each square

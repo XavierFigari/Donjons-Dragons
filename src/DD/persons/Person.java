@@ -1,6 +1,7 @@
 package DD.persons;
 
 import DD.Colors;
+import DD.UserInterface;
 import DD.tools.OffensiveTool;
 import DD.tools.DefensiveTool;
 
@@ -24,17 +25,16 @@ public abstract class Person {
         this.name = name;
         this.position = 0;
     }
+
     // Methods
     // --------------------------------------------------------------------------
-
-    abstract public PlayerType getType();
 
     public void reset() {
         this.position = 0;
     }
 
-    //    public abstract String pickOffensiveTool(OffensiveTool offensiveTool);
 
+    //    public abstract String pickOffensiveTool(OffensiveTool offensiveTool);
     public String pickTool(OffensiveTool newOffensiveTool) {
         String message;
         if (this.offensiveTool.getClass() == newOffensiveTool.getClass()) {
@@ -50,6 +50,25 @@ public abstract class Person {
                     + this.getTotalStrength() + " points.";
         }
         return message;
+    }
+
+    public void fight(Enemy enemy, UserInterface ui) throws PersonIsDeadException {
+        ui.display("- Tu attaques " + enemy.getName() + ", qui a une force de " + enemy.getStrength() + " points.");
+        ui.display("- Tu as une force de " + this.getStrength() + " points.") ;
+        if (this.offensiveTool != null) {
+            ui.display("- Tu utilises " + this.offensiveTool + ", ce qui te donne une force totale de " + this.getTotalStrength() + " points.");
+        }
+        enemy.setStrength(enemy.getStrength() - this.getTotalStrength());
+        if (enemy.getStrength() <= 0) {
+            ui.display("Tu as vaincu " + enemy.getName() + " ! Il s'effondre à terre, mort.");
+        } else {
+            ui.display("Tu as infligé " + this.getTotalStrength() + " points de dégâts à " + enemy.getName() + ".\n" +
+                    enemy.getName() + " a encore " + enemy.getStrength() + " points de vie.");
+            ui.display(enemy.getName() + " riposte !");
+            this.setLife(this.getLife() - enemy.getStrength());
+            ui.display("Tu as perdu " + enemy.getStrength() + " points de vie.\n" +
+                    "Il te reste " + this.getLife() + " points de vie.");
+        }
     }
 
     @Override
@@ -70,48 +89,55 @@ public abstract class Person {
     public int getLife() {
         return life;
     }
+
     public int getStrength() {
         return strength;
     }
+
     public int getTotalStrength() {
         return strength + offensiveTool.getAttackLevel();
     }
+
     public int getPosition() {
         return position;
     }
+
     public OffensiveTool getOffensiveTool() {
         return offensiveTool;
     }
+
     public DefensiveTool getDefensiveTool() {
         return defensiveTool;
     }
 
     // Abstract methods
-
     public abstract String getTypeString();
+
     // Setters
     // --------------------------------------------------------------------------
-
     public void setName(String name) {
         this.name = name;
     }
+
     public void setStrength(int strength) {
         this.strength = strength;
     }
+
     public void setPosition(int position) {
         this.position = position;
     }
+
     public void setLife(int life) throws PersonIsDeadException {
         this.life = life;
         if (life < 0) throw new PersonIsDeadException(this);
     }
-        public void setDefensiveTool(DefensiveTool defensiveTool) {
+
+    public void setDefensiveTool(DefensiveTool defensiveTool) {
         this.defensiveTool = defensiveTool;
     }
+
     public void setOffensiveTool(OffensiveTool offensiveTool) {
         this.offensiveTool = offensiveTool;
     }
-
-
 
 }

@@ -27,6 +27,10 @@ public class UserInterface {
         Msg.printPureWhite(info);
     }
 
+    public void displayRed(String info) {
+        Msg.printRed(info);
+    }
+
     private String dieEmoji(int dieVal) {
         // Die emoji starts at 9856 (1), then 9857 (2), etc.
         return Character.toString(9855 + dieVal);

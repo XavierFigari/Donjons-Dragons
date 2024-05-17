@@ -19,7 +19,6 @@ public class Msg {
     public static String underlined(String msg) {return "\u001b[4m" + msg + "\u001b[0m";}
     // =======================
     // Print string inside box
-
     // =======================
     private static int getMaxLength(String... strings) {
         int len = Integer.MIN_VALUE;

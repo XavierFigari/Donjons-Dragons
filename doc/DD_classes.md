@@ -27,7 +27,6 @@ classDiagram
         +Person(String name)
         +reset()* : void
         +toString() : String
-        +getTypeString() : String
     }
 
     class Warrior {

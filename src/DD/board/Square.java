@@ -18,10 +18,7 @@ public abstract class Square {
         this.ui = ui;
     }
 
-//    public abstract void interact(Person person, UserInterface ui) throws PersonIsDeadException ;
-    public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-//        ui.display(person.pickOffensiveTool(tool));
-    }
+    public abstract void interact(Person person, UserInterface ui) throws PersonIsDeadException ;
 
 }
 

@@ -17,11 +17,6 @@ public class Wizard extends Person {
     }
 
     @Override
-    public PlayerType getType() {
-        return PlayerType.WIZARD;
-    }
-
-    @Override
     public void reset() {
         super.reset();
         this.life = 6;

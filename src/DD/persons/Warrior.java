@@ -25,10 +25,6 @@ public class Warrior extends Person {
         this.defensiveTool = new Shield();
     }
 
-    @Override
-    public PlayerType getType() {
-        return PlayerType.WARRIOR;
-    }
 
     @Override
     public void reset() {
