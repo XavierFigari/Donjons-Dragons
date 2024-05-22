@@ -6,7 +6,7 @@ public class Sorcerer extends Enemy {
 
     public Sorcerer(String name) {
         super(name);
-        this.life = 25;
+        this.life = 15;
         this.strength = 4 + (int) new Random().nextInt(2);
     }
 

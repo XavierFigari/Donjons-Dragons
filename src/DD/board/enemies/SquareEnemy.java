@@ -16,12 +16,21 @@ public class SquareEnemy extends Square {
 
     @Override
     public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        ui.display("Le " + enemy.getTypeString() + " " + enemy.getName() + " t'attaque !");
-        ui.displayRed(person.getName() + ", je vais te buter !");
-        // This is where everything happens : look at the beauty of this simple statement :
-        person.fight(enemy, ui);
 
-        // Now look at the person.fight method, which is common to all persons and enemies.
+        if (enemy == null) {
+            ui.display("Un combat a eu lieu ici, mais il n'y a plus personne. Tu lèches un peu de sang pour te remonter le moral.");
+            return;
+        }
+
+        ui.display("Le " + enemy.getTypeString() + " " + enemy.getName() + " t'attaque !");
+        ui.displayRed("\"" + person.getName() + ", je vais te buter !\", hurle " + enemy.getName());
+
+        // Fight !
+        person.fight(enemy, ui);
+    }
+
+    public void removeEnemy() {
+        this.enemy = null;
     }
 
 }

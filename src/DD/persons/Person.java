@@ -53,28 +53,82 @@ public abstract class Person {
     }
 
     public void fight(Enemy enemy, UserInterface ui) throws PersonIsDeadException {
+
+        int fleeMove = 0;
+
+        // Inform the player about the fight
+
         ui.display("- Ta force \uD83D\uDCAA = " + this.getStrength() + " points. Ta vie ❤️ = " + this.getLife() + " points.");
-        ui.display("- Tu attaques " + enemy.getName() + " (\uD83D\uDCAA " + enemy.getStrength() + " ❤️ " + enemy.getLife() + ")." );
+        ui.display("- Tu attaques " + enemy.getName() + " (\uD83D\uDCAA " + enemy.getStrength() + " ❤️ " + enemy.getLife() + ").");
         if (this.offensiveTool != null) {
             ui.display("- Tu utilises " + this.offensiveTool + ", ce qui te donne une force totale de " + this.getTotalStrength() + " points.");
         }
-        // Lower the enemy's life : substraction of the total strength of the player
-        enemy.setLife(enemy.getLife() - this.getTotalStrength());
 
-        // Test if the enemy is dead
-        if (enemy.getLife() <= 0) {
-            ui.display("Tu as vaincu " + enemy.getName() + " ! Il s'effondre à terre, mort.");
-        } else {
-            // He's not dead, he's fighting back !
+        // Ok, we're ready to fight !
+
+        // Tant que le joueur n'a pas fui :
+        while ((fleeMove = ui.getFleeMove()) == 0) {
+
+            // 1. The player attacks the enemy
+            // -------------------------------
+
+            // Lower the enemy's life : subtract from enemy's life the total strength of the player
+            int newEnemyLife = enemy.getLife() - this.getTotalStrength();
+            if (newEnemyLife <= 0) {
+                ui.display("Tu as vaincu " + enemy.getName() + " ! Il s'effondre à terre, mort.\n" +
+                        "Hourra ! Tu as gagné le combat !");
+            }
+            enemy.setLife(newEnemyLife); // throws exception if life <= 0
+
+            // 2. He's not dead, he's fighting back !
+            // --------------------------------------
+
             ui.display("Tu as infligé " + this.getTotalStrength() + " points de dégâts à " + enemy.getName() + ".\n" +
                     enemy.getName() + " a encore " + enemy.getLife() + " points de vie ❤️.");
             ui.displayRed(enemy.getName() + " riposte ! Il a une force \uD83D\uDCAA de " + enemy.getStrength() + " points.");
+
             int newLife = this.getLife() - Math.min(enemy.getStrength(), this.getLife());
+
             ui.display("Tu as perdu " + Math.min(enemy.getStrength(), this.getLife()) + " points de vie.\n" +
-                    (newLife>0?"Il te reste " + newLife + " points de vie ❤️.":"\n\uD83D\uDC80 Tu es mort.\n") );
-            this.setLife(newLife); // throw exception if life <= 0
+                    (newLife > 0 ? "Il te reste " + newLife + " points de vie ❤️." : "\n\uD83D\uDC80 Tu es mort.\n"));
+
+            this.setLife(newLife); // throws exception if life <= 0
         }
+
+        // Le joueur a fui
+        fleeMove = Math.min(this.getPosition(), fleeMove);
+        ui.display("Tu as fui le combat ! Tu recules de " + fleeMove + " cases.");
+        this.setPosition(this.getPosition() - fleeMove);
+        ui.display("Tu es maintenant sur la case " + this.getPosition() + ".");
     }
+
+//    public void simpleFight(Enemy enemy, UserInterface ui) throws PersonIsDeadException {
+//        // Inform the player about the fight
+//        ui.display("- Ta force \uD83D\uDCAA = " + this.getStrength() + " points. Ta vie ❤️ = " + this.getLife() + " points.");
+//        ui.display("- Tu attaques " + enemy.getName() + " (\uD83D\uDCAA " + enemy.getStrength() + " ❤️ " + enemy.getLife() + ").");
+//
+//        // Inform the player about the offensive tool
+//        if (this.offensiveTool != null) {
+//            ui.display("- Tu utilises " + this.offensiveTool + ", ce qui te donne une force totale de " + this.getTotalStrength() + " points.");
+//        }
+//
+//        // Lower the enemy's life : subtract from enemy's life the total strength of the player
+//        enemy.setLife(enemy.getLife() - this.getTotalStrength());
+//
+//        // Test if the enemy is dead
+//        if (enemy.getLife() <= 0) {
+//            ui.display("Tu as vaincu " + enemy.getName() + " ! Il s'effondre à terre, mort.");
+//        } else {
+//            // He's not dead, he's fighting back !
+//            ui.display("Tu as infligé " + this.getTotalStrength() + " points de dégâts à " + enemy.getName() + ".\n" +
+//                    enemy.getName() + " a encore " + enemy.getLife() + " points de vie ❤️.");
+//            ui.displayRed(enemy.getName() + " riposte ! Il a une force \uD83D\uDCAA de " + enemy.getStrength() + " points.");
+//            int newLife = this.getLife() - Math.min(enemy.getStrength(), this.getLife());
+//            ui.display("Tu as perdu " + Math.min(enemy.getStrength(), this.getLife()) + " points de vie.\n" +
+//                    (newLife > 0 ? "Il te reste " + newLife + " points de vie ❤️." : "\n\uD83D\uDC80 Tu es mort.\n"));
+//            this.setLife(newLife); // throw exception if life <= 0
+//        }
+//    }
 
     @Override
     public String toString() {
@@ -91,6 +145,7 @@ public abstract class Person {
     public String getName() {
         return name;
     }
+
     public int getLife() {
         return life;
     }
@@ -134,8 +189,7 @@ public abstract class Person {
 
     public void setLife(int life) throws PersonIsDeadException {
         this.life = life;
-        // DONE IN WIZARD AND WARRIOR NOW (otherwise, it would apply to enemies too)
-//        if (life <= 0) throw new PersonIsDeadException(this);
+        if (life <= 0) throw new PersonIsDeadException(this);
     }
 
     public void setDefensiveTool(DefensiveTool defensiveTool) {

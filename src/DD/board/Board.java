@@ -166,17 +166,47 @@ public class Board {
                 ));
             }
             case RANDOM -> {
-                squares.addAll(Collections.nCopies(10, new SquareGoblin(ui)));
-                squares.addAll(Collections.nCopies(10, new SquareSorcerer(ui)));
-                squares.addAll(Collections.nCopies(4, new SquareDragon(ui)));
-                squares.addAll(Collections.nCopies(6, new SquarePotionStd(ui)));
-                squares.addAll(Collections.nCopies(2, new SquarePotionBig(ui)));
-                squares.addAll(Collections.nCopies(2, new SquareFireball(ui, wizards)));
-                squares.addAll(Collections.nCopies(4, new SquareLightning(ui, wizards)));
-                squares.addAll(Collections.nCopies(5, new SquareAxe(ui, warriors)));
-                squares.addAll(Collections.nCopies(4, new SquareSword(ui, warriors)));
-                squares.addAll(Collections.nCopies(17, new SquareEmpty(ui)));
+//                squares.addAll(Collections.nCopies(10, new SquareGoblin(ui)));
+//                squares.addAll(Collections.nCopies(10, new SquareSorcerer(ui)));
+//                squares.addAll(Collections.nCopies(4, new SquareDragon(ui)));
+//                squares.addAll(Collections.nCopies(6, new SquarePotionStd(ui)));
+//                squares.addAll(Collections.nCopies(2, new SquarePotionBig(ui)));
+//                squares.addAll(Collections.nCopies(2, new SquareFireball(ui, wizards)));
+//                squares.addAll(Collections.nCopies(4, new SquareLightning(ui, wizards)));
+//                squares.addAll(Collections.nCopies(5, new SquareAxe(ui, warriors)));
+//                squares.addAll(Collections.nCopies(4, new SquareSword(ui, warriors)));
+//                squares.addAll(Collections.nCopies(17, new SquareEmpty(ui)));
 
+                for (int i = 0; i < 10; i++) {
+                    squares.add(new SquareGoblin(ui));
+                }
+                for (int i = 0; i < 10; i++) {
+                    squares.add(new SquareSorcerer(ui));
+                }
+                for (int i = 0; i < 4; i++) {
+                    squares.add(new SquareDragon(ui));
+                }
+                for (int i = 0; i < 6; i++) {
+                    squares.add(new SquarePotionStd(ui));
+                }
+                for (int i = 0; i < 2; i++) {
+                    squares.add(new SquarePotionBig(ui));
+                }
+                for (int i = 0; i < 2; i++) {
+                    squares.add(new SquareFireball(ui, wizards));
+                }
+                for (int i = 0; i < 4; i++) {
+                    squares.add(new SquareLightning(ui, wizards));
+                }
+                for (int i = 0; i < 5; i++) {
+                    squares.add(new SquareAxe(ui, warriors));
+                }
+                for (int i = 0; i < 4; i++) {
+                    squares.add(new SquareSword(ui, warriors));
+                }
+                for (int i = 0; i < 17; i++) {
+                    squares.add(new SquareEmpty(ui));
+                }
                 Collections.shuffle(squares);
             }
 

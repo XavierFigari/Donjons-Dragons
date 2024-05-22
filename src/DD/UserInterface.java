@@ -7,26 +7,28 @@ import DD.persons.Wizard;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class UserInterface {
 
     private final Scanner sc = new Scanner(System.in);
+    private Random random = new Random();
 
     public void displayGameStart() {
-       Msg.printBox(Colors.ANSI_GREEN,"Le jeu démarre !");
+       Msg.printGreen("Le jeu démarre !");
     }
 
     public void displayGameOver() {
 
 
-        Msg.printRainbow("╔═══════════════════════════════╗");
-        Msg.printRainbow("║                               ║");
-        Msg.printRainbow("║  ╔═╗╔═╗╔╦╗╔═╗  ╔═╗╦  ╦╔═╗╦═╗  ║");
-        Msg.printRainbow("║  ║ ╦╠═╣║║║║╣   ║ ║╚╗╔╝║╣ ╠╦╝  ║");
-        Msg.printRainbow("║  ╚═╝╩ ╩╩ ╩╚═╝  ╚═╝ ╚╝ ╚═╝╩╚═  ║");
-        Msg.printRainbow("║                               ║");
-        Msg.printRainbow("╚═══════════════════════════════╝");
+        Msg.printGreen("╔═══════════════════════════════╗");
+        Msg.printGreen("║                               ║");
+        Msg.printGreen("║  ╔═╗╔═╗╔╦╗╔═╗  ╔═╗╦  ╦╔═╗╦═╗  ║");
+        Msg.printGreen("║  ║ ╦╠═╣║║║║╣   ║ ║╚╗╔╝║╣ ╠╦╝  ║");
+        Msg.printGreen("║  ╚═╝╩ ╩╩ ╩╚═╝  ╚═╝ ╚╝ ╚═╝╩╚═  ║");
+        Msg.printGreen("║                               ║");
+        Msg.printGreen("╚═══════════════════════════════╝");
 
     }
 
@@ -212,5 +214,28 @@ public class UserInterface {
         if (answer.equals("Q")) {
             quit();
         }
+    }
+
+    public int getFleeMove() {
+        do {
+            System.out.println("\nQue veux-tu faire ?");
+            System.out.println("1. Continuer le combat");
+            System.out.println("2. Fuir");
+            System.out.print("Entre 1 ou 2 : ");
+            String answer = sc.nextLine();
+//            String answer = "1";
+//            String answer = random.nextInt(2) + 1 + "";
+
+            switch (answer) {
+                case "1": // do not flee : do not move
+                    return 0;
+                case "2": // flee : move back from 1 to 6 squares
+                    return 1 + random.nextInt(6);
+                default:
+                    Msg.printRed("Ce choix n'est pas autorisé\n");
+            }
+
+        } while (true);
+
     }
 }

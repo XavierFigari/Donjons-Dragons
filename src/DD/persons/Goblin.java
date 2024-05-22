@@ -6,7 +6,7 @@ public class Goblin extends Enemy {
 
     public Goblin(String name) {
         super(name);
-        this.life = 20;
+        this.life = 12;
         this.strength = 5 + (int) new Random().nextInt(2);
     }
 

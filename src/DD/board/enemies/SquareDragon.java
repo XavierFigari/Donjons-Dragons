@@ -24,8 +24,8 @@ public class SquareDragon extends SquareEnemy {
         return "Case Dragon";
     }
 
-    @Override
-    public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
-        super.interact(person, ui);
-    }
+//    @Override
+//    public void interact(Person person, UserInterface ui) throws PersonIsDeadException {
+//        super.interact(person, ui);
+//    }
 }

@@ -12,7 +12,7 @@ public class Warrior extends Person {
         super(name);
         Random random = new Random();
         // The life of a warrior is between 5 and 10
-        this.life = 5 + random.nextInt(6);
+        this.life = 15 + random.nextInt(6);
         this.strength = 10;
         switch (random.nextInt(2)) {
             case 0:
@@ -40,11 +40,11 @@ public class Warrior extends Person {
         return "Guerrier \uD83E\uDD77";
     }
 
-    @Override
-    public void setLife(int life) throws PersonIsDeadException {
-        super.setLife(life);
-        if (life <= 0) throw new PersonIsDeadException(this);
-    }
+//    @Override
+//    public void setLife(int life) throws PersonIsDeadException {
+//        super.setLife(life);
+//        if (life <= 0) throw new PersonIsDeadException(this);
+//    }
 
 
 }

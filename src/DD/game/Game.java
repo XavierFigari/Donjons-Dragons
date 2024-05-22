@@ -5,6 +5,8 @@ import DD.board.Board;
 import DD.UserInterface;
 import DD.Msg;
 import DD.board.BoardType;
+import DD.board.Square;
+import DD.board.enemies.SquareEnemy;
 import DD.persons.Person;
 import DD.persons.PersonIsDeadException;
 import DD.persons.Warrior;
@@ -28,7 +30,8 @@ public class Game {
     // Constructor
     public Game() {
         this.ui = new UserInterface();
-        this.dice = new DiceOne(); // NormalDice();
+//        this.dice = new DiceOne();
+        this.dice = new NormalDice();
     }
 
     // Method : play
@@ -40,16 +43,14 @@ public class Game {
         ui.printBox(Colors.RAINBOW, "DONJONS ET DRAGONS" );
 
         // Create players !
-        // players = ui.getPlayers();
+         players = ui.getPlayers();
 
-        players = new ArrayList<>(Arrays.asList(
-                new Warrior("Cacaprout"),
-//                new Wizard("Wizard 1"),
-//                new Wizard("Wizard 2"),
-//                new Warrior("Warrior 2"),
-//                new Warrior("Warrior 3"),
-                new Wizard("Cuicui")
-        ));
+        // POUR LE TEST :
+        // ============
+//        players = new ArrayList<>(Arrays.asList(
+//                new Warrior("Boubou"),
+//                new Wizard("Cuicui")
+//        ));
 
 
         // Create board : pass the players to the board, to set the allowed persons for each square
@@ -70,18 +71,20 @@ public class Game {
                 ui.display("Le personnage " + currentPlayer.playerName + " est sorti du plateau !");
                 ui.display("Bon, on va dire qu'il a gagné.");
                 ui.displayWinner(currentPlayer.playerName);
+
                 gameOver = true;
             }
             turnCount++;
         }
+        ui.displayGameOver();
         ui.endOfGameMenu();
     }
 
-    // Méthode : jouer un tour
+    // Méthode : jouer un tour, pour tous les joueurs
     private boolean gameTurn(List<Person> players, Board board) throws PersonOutOfBoard {
 
         int diceValue, newPosition;
-        boolean outOfBoard = false;
+        boolean outOfBoard;
         boolean gameOver = false;
 
         // Pour tous les joueurs :
@@ -96,7 +99,7 @@ public class Game {
             }
 
             ui.displayPlayerName(player);
-//            ui.askToThrowDice();
+            ui.askToThrowDice();
 
             diceValue = dice.throwDice();
 
@@ -109,11 +112,19 @@ public class Game {
             ui.displayPlayerStatus(player, diceValue, newPosition);
 
             // Faire interagir le joueur avec le contenu de la case
+            Square square = board.getSquare(newPosition);
             try {
-                board.getSquare(newPosition).interact(player, ui);
+                square.interact(player, ui);
             } catch (PersonIsDeadException e) {
-                ui.printBox(Colors.ANSI_GREEN, e.person.getName() + ", tu es mort ! Tu seras ressuscité à la prochaine partie.");
-                players.remove(player);
+                if (e.person == player) {
+                    ui.printBox(Colors.ANSI_GREEN, e.person.getName() +
+                            ", tu es mort \uD83D\uDC80 ! Tu seras ressuscité à la prochaine partie.");
+                    players.remove(player);
+                } else {
+                    // casting en SquareEnemy pour éviter de déclarer removeEnemy() dans Square
+                    // et de l'implémenter dans toutes les classes filles :
+                    ((SquareEnemy) square).removeEnemy();
+                }
             }
 
             // Throw exception if new position is out of board
@@ -127,7 +138,6 @@ public class Game {
         }
         if (players.isEmpty()) {
             ui.display("Tous les joueurs sont morts !");
-            ui.displayGameOver();
             gameOver = true;
         }
         return gameOver;
