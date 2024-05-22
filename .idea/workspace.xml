@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="63c24f02-71cf-43e8-92d9-bcf0c920c9f5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/Colors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/Msg.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/UserInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/BoardType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/Square.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/SquareEmpty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/SquareType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/enemies/SquareDragon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/enemies/SquareEnemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/enemies/SquareGoblin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/enemies/SquareSorcerer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/potions/SquarePotionBig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/potions/SquarePotionStd.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/tools/SquareAxe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/tools/SquareFireball.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/tools/SquareLightning.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/tools/SquareSword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/board/tools/SquareTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/game/Dice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/game/DiceOne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/game/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/game/NormalDice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Dragon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Enemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Goblin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/PersonIsDeadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/PlayerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Sorcerer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Warrior.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Wizard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/Axe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/DefensiveTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/Fireball.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/Lightning.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/OffensiveTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/Philtre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/Shield.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/tools/Sword.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2goltVZWl4sfhhvgP1aiv9WK0lV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/xavier/campus/12.Java/DD-Maven/src/main/java/campus",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/campus" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="63c24f02-71cf-43e8-92d9-bcf0c920c9f5" name="Changes" comment="" />
+      <created>1716372031514</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716372031514</updated>
+      <workItem from="1716372032604" duration="1898000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
