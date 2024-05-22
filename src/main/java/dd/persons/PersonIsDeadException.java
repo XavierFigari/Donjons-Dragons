@@ -1,4 +1,4 @@
-package dd.persons;
+package main.java.dd.persons;
 
 public class PersonIsDeadException extends Exception {
     public Person person;

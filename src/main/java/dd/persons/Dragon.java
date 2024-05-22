@@ -1,4 +1,4 @@
-package dd.persons;
+package main.java.dd.persons;
 
 public class Dragon extends Enemy {
 

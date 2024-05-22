@@ -1,9 +1,9 @@
-package dd.board.potions;
+package main.java.dd.board.potions;
 
-import dd.UserInterface;
-import dd.board.Square;
-import dd.persons.Person;
-import dd.persons.PersonIsDeadException;
+import main.java.dd.UserInterface;
+import main.java.dd.board.Square;
+import main.java.dd.persons.Person;
+import main.java.dd.persons.PersonIsDeadException;
 
 public class SquarePotionStd extends Square {
 

@@ -1,6 +1,6 @@
-package dd;
+package main.java.dd;
 
-import dd.game.Game;
+import main.java.dd.game.Game;
 
 public class Main {
     public static void main(String[] args) {

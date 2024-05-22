@@ -1,13 +1,13 @@
-package dd.game;
+package main.java.dd.game;
 
-import dd.Colors;
-import dd.UserInterface;
-import dd.board.Board;
-import dd.board.BoardType;
-import dd.board.Square;
-import dd.board.enemies.SquareEnemy;
-import dd.persons.Person;
-import dd.persons.PersonIsDeadException;
+import main.java.dd.Colors;
+import main.java.dd.UserInterface;
+import main.java.dd.board.Board;
+import main.java.dd.board.BoardType;
+import main.java.dd.board.Square;
+import main.java.dd.board.enemies.SquareEnemy;
+import main.java.dd.persons.Person;
+import main.java.dd.persons.PersonIsDeadException;
 
 import java.util.List;
 

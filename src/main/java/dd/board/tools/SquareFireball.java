@@ -1,8 +1,8 @@
-package dd.board.tools;
+package main.java.dd.board.tools;
 
-import dd.UserInterface;
-import dd.persons.Person;
-import dd.tools.Fireball;
+import main.java.dd.UserInterface;
+import main.java.dd.persons.Person;
+import main.java.dd.tools.Fireball;
 
 import java.util.List;
 

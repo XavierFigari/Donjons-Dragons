@@ -1,8 +1,8 @@
-package dd.board;
+package main.java.dd.board;
 
-import dd.UserInterface;
-import dd.persons.Person;
-import dd.persons.PersonIsDeadException;
+import main.java.dd.UserInterface;
+import main.java.dd.persons.Person;
+import main.java.dd.persons.PersonIsDeadException;
 
 public class SquareEmpty extends Square {
 

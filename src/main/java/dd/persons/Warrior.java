@@ -1,12 +1,12 @@
-package dd.persons;
+package main.java.dd.persons;
 
-import dd.tools.Axe;
-import dd.tools.Shield;
-import dd.tools.Sword;
+import main.java.dd.tools.Axe;
+import main.java.dd.tools.Shield;
+import main.java.dd.tools.Sword;
 
 import java.util.Random;
 
-public class Warrior extends Person {
+public class Warrior extends Hero {
 
     public Warrior(String name) {
         super(name);

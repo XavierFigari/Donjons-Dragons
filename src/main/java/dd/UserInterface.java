@@ -1,9 +1,9 @@
-package dd;
+package main.java.dd;
 
-import dd.persons.Person;
-import dd.persons.PlayerType;
-import dd.persons.Warrior;
-import dd.persons.Wizard;
+import main.java.dd.persons.Person;
+import main.java.dd.persons.PlayerType;
+import main.java.dd.persons.Warrior;
+import main.java.dd.persons.Wizard;
 
 import java.util.ArrayList;
 import java.util.List;

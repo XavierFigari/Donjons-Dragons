@@ -1,9 +1,9 @@
-package dd.board.enemies;
+package main.java.dd.board.enemies;
 
-import dd.UserInterface;
-import dd.persons.Goblin;
-import dd.persons.Person;
-import dd.persons.PersonIsDeadException;
+import main.java.dd.UserInterface;
+import main.java.dd.persons.Goblin;
+import main.java.dd.persons.Person;
+import main.java.dd.persons.PersonIsDeadException;
 
 import java.util.List;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package dd.board;
+package main.java.dd.board;
 
 public enum SquareType {
     HAMMER,

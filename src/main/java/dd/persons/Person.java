@@ -1,9 +1,9 @@
-package dd.persons;
+package main.java.dd.persons;
 
-import dd.Colors;
-import dd.UserInterface;
-import dd.tools.DefensiveTool;
-import dd.tools.OffensiveTool;
+import main.java.dd.Colors;
+import main.java.dd.UserInterface;
+import main.java.dd.tools.DefensiveTool;
+import main.java.dd.tools.OffensiveTool;
 
 public abstract class Person {
 

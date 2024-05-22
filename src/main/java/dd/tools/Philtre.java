@@ -1,4 +1,4 @@
-package dd.tools;
+package main.java.dd.tools;
 
 public class Philtre extends DefensiveTool {
     public Philtre() {

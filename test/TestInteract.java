@@ -1,11 +1,11 @@
-import DD.Msg;
-import DD.UserInterface;
-import DD.board.Board;
-import DD.board.BoardType;
-import DD.board.Square;
-import DD.persons.Person;
-import DD.persons.Warrior;
-import DD.persons.Wizard;
+import main.java.dd.Msg;
+import main.java.dd.UserInterface;
+import main.java.dd.board.Board;
+import main.java.dd.board.BoardType;
+import main.java.dd.board.Square;
+import main.java.dd.persons.Person;
+import main.java.dd.persons.Warrior;
+import main.java.dd.persons.Wizard;
 
 import java.util.List;
 

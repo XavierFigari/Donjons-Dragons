@@ -1,4 +1,4 @@
-package dd.game;
+package main.java.dd.game;
 
 public class DiceOne implements Dice {
     @Override

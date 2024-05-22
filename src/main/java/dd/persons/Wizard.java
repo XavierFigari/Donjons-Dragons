@@ -1,7 +1,7 @@
-package dd.persons;
+package main.java.dd.persons;
 
-import dd.tools.Fireball;
-import dd.tools.Philtre;
+import main.java.dd.tools.Fireball;
+import main.java.dd.tools.Philtre;
 
 import java.util.Random;
 
