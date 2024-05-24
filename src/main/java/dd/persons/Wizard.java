@@ -1,11 +1,11 @@
-package main.java.dd.persons;
+package dd.persons;
 
-import main.java.dd.tools.Fireball;
-import main.java.dd.tools.Philtre;
+import dd.tools.Fireball;
+import dd.tools.Philtre;
 
 import java.util.Random;
 
-public class Wizard extends Person {
+public class Wizard extends Hero {
 
     public Wizard(String name) {
         super(name);
@@ -28,6 +28,10 @@ public class Wizard extends Person {
     @Override
     public String getTypeString() {
         return "Magicien \uD83E\uDDD9";
+    }
+
+    public String getType() {
+        return "Wizard";
     }
 
     @Override

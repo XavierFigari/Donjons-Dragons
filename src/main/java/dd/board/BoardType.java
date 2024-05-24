@@ -1,4 +1,4 @@
-package main.java.dd.board;
+package dd.board;
 
 public enum BoardType {
     TEST,

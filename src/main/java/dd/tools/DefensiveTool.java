@@ -1,4 +1,4 @@
-package main.java.dd.tools;
+package dd.tools;
 
 public abstract class DefensiveTool {
 

@@ -1,4 +1,4 @@
-package main.java.dd.persons;
+package dd.persons;
 
 public abstract class Enemy extends Person{
 

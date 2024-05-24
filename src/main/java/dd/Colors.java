@@ -1,4 +1,4 @@
-package main.java.dd;
+package dd;
 
 public class Colors {
     public static String ANSI_RESET = "\u001B[0m";

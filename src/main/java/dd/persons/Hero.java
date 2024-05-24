@@ -1,13 +1,12 @@
-package main.java.dd.persons;
-
-import java.util.ArrayList;
-import java.util.List;
+package dd.persons;
 
 public class Hero extends Person {
-    private List<Hero> heroes = new ArrayList<Hero>();
 
     public Hero(String name) {
         super(name);
+    }
+
+    public Hero() {
     }
 
     @Override
@@ -15,7 +14,9 @@ public class Hero extends Person {
         return "Hero";
     }
 
-    public List<Hero> getHeroes() {
-        return this.heroes;
+    @Override
+    public String getType() {
+        return "hero";
     }
+
 }

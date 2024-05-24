@@ -1,4 +1,4 @@
-package main.java.dd.persons;
+package dd.persons;
 
 public class Dragon extends Enemy {
 
@@ -11,6 +11,11 @@ public class Dragon extends Enemy {
      @Override
     public String getTypeString() {
         return "dragon \uD83D\uDC09";
+    }
+
+    @Override
+    public String getType() {
+        return "dragon";
     }
 
 }

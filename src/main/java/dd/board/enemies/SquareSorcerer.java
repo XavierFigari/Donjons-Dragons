@@ -1,9 +1,9 @@
-package main.java.dd.board.enemies;
+package dd.board.enemies;
 
-import main.java.dd.UserInterface;
-import main.java.dd.persons.Person;
-import main.java.dd.persons.PersonIsDeadException;
-import main.java.dd.persons.Sorcerer;
+import dd.UserInterface;
+import dd.persons.Person;
+import dd.persons.PersonIsDeadException;
+import dd.persons.Sorcerer;
 
 import java.util.List;
 import java.util.Random;

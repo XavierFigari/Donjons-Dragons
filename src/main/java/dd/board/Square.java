@@ -1,9 +1,9 @@
-package main.java.dd.board;
+package dd.board;
 
-import main.java.dd.UserInterface;
-import main.java.dd.persons.Person;
-import main.java.dd.persons.PersonIsDeadException;
-import main.java.dd.tools.OffensiveTool;
+import dd.UserInterface;
+import dd.persons.Person;
+import dd.persons.PersonIsDeadException;
+import dd.tools.OffensiveTool;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package main.java.dd.board.enemies;
+package dd.board.enemies;
 
-import main.java.dd.UserInterface;
-import main.java.dd.persons.Dragon;
+import dd.UserInterface;
+import dd.persons.Dragon;
 
 import java.util.List;
 import java.util.Random;

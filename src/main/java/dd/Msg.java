@@ -1,4 +1,4 @@
-package main.java.dd;
+package dd;
 
 import java.util.Objects;
 

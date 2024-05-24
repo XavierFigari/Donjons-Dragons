@@ -1,4 +1,4 @@
-package main.java.dd.persons;
+package dd.persons;
 
 import java.util.Random;
 
@@ -13,6 +13,11 @@ public class Goblin extends Enemy {
      @Override
     public String getTypeString() {
         return "gobelin \uD83D\uDC79";
+    }
+
+    @Override
+    public String getType() {
+        return "goblin";
     }
 
 }

@@ -1,18 +1,18 @@
-package main.java.dd.board;
+package dd.board;
 
-import main.java.dd.UserInterface;
-import main.java.dd.board.enemies.SquareDragon;
-import main.java.dd.board.enemies.SquareGoblin;
-import main.java.dd.board.enemies.SquareSorcerer;
-import main.java.dd.board.potions.SquarePotionBig;
-import main.java.dd.board.potions.SquarePotionStd;
-import main.java.dd.board.tools.SquareAxe;
-import main.java.dd.board.tools.SquareFireball;
-import main.java.dd.board.tools.SquareLightning;
-import main.java.dd.board.tools.SquareSword;
-import main.java.dd.persons.Person;
-import main.java.dd.persons.Warrior;
-import main.java.dd.persons.Wizard;
+import dd.UserInterface;
+import dd.board.enemies.SquareDragon;
+import dd.board.enemies.SquareGoblin;
+import dd.board.enemies.SquareSorcerer;
+import dd.board.potions.SquarePotionBig;
+import dd.board.potions.SquarePotionStd;
+import dd.board.tools.SquareAxe;
+import dd.board.tools.SquareFireball;
+import dd.board.tools.SquareLightning;
+import dd.board.tools.SquareSword;
+import dd.persons.Person;
+import dd.persons.Warrior;
+import dd.persons.Wizard;
 
 import java.util.ArrayList;
 import java.util.Collections;

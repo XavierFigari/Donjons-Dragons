@@ -1,10 +1,15 @@
-package main.java.dd.tools;
+package dd.tools;
 
 public class Sword extends OffensiveTool {
 
     public Sword() {
         super();
         this.attackLevel = 5;
+    }
+
+    @Override
+    public String getOffensiveToolDatabaseName() {
+        return "sword";
     }
 
     @Override

@@ -1,10 +1,12 @@
-package main.java.dd;
+package dd;
 
-import main.java.dd.persons.Person;
-import main.java.dd.persons.PlayerType;
-import main.java.dd.persons.Warrior;
-import main.java.dd.persons.Wizard;
+import dd.db.DatabaseDD;
+import dd.persons.Person;
+import dd.persons.PlayerType;
+import dd.persons.Warrior;
+import dd.persons.Wizard;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -83,7 +85,14 @@ public class UserInterface {
         System.out.println();
         System.out.println("Création d'un personnage");
         System.out.println("------------------------");
-        return getPlayerType() == PlayerType.WARRIOR ? new Warrior(getPlayerName()) : new Wizard(getPlayerName());
+
+        PlayerType playerType = getPlayerType(); // ask user : G or M : Warrior or Wizard
+
+        if (playerType == PlayerType.WARRIOR) {
+            return new Warrior(getPlayerName());
+        } else {
+            return new Wizard(getPlayerName());
+        }
     }
 
     private void deletePlayer(Person player) {
@@ -162,8 +171,16 @@ public class UserInterface {
             switch (answer) {
                 case "C": // Create player
                     // Add player (interactively)
-                    players.add(getPlayer());
-                    displayPlayer(players.getLast());
+                    Person player = getPlayer();
+                    players.add(player);
+                    displayPlayer(player);
+                    try {
+                        DatabaseDD.createPerson(player);
+                        display("Joueur créé dans la base de données.");
+                    } catch (SQLException e) {
+                        display(e.toString());
+                        display("Erreur lors de la création du joueur dans la base de données.");
+                    }
                     break;
                 case "A": // Display players
                     displayAllPlayers(players);

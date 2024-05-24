@@ -1,4 +1,4 @@
-package main.java.dd.game;
+package dd.game;
 
 public interface Dice {
     int throwDice() ;

@@ -1,14 +1,16 @@
-package main.java.dd.game;
+package dd.game;
 
-import main.java.dd.Colors;
-import main.java.dd.UserInterface;
-import main.java.dd.board.Board;
-import main.java.dd.board.BoardType;
-import main.java.dd.board.Square;
-import main.java.dd.board.enemies.SquareEnemy;
-import main.java.dd.persons.Person;
-import main.java.dd.persons.PersonIsDeadException;
+import dd.Colors;
+import dd.UserInterface;
+import dd.board.Board;
+import dd.board.BoardType;
+import dd.board.Square;
+import dd.board.enemies.SquareEnemy;
+import dd.db.DatabaseDD;
+import dd.persons.Person;
+import dd.persons.PersonIsDeadException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class Game {
@@ -25,20 +27,35 @@ public class Game {
     // Constructor
     public Game() {
         this.ui = new UserInterface();
-//        this.dice = new DiceOne();
-        this.dice = new NormalDice();
+        this.dice = new NormalDice(); // DiceOne() ou NormalDice()
     }
 
     // Method : play
-    public void play() {
+    public void play() throws SQLException {
+
         int turnCount = 1;
         boolean gameOver = false;
 
         // Greetings !
-        ui.printBox(Colors.RAINBOW, "DONJONS ET DRAGONS" );
+        ui.printBox(Colors.RAINBOW, "DONJONS ET DRAGONS");
 
         // Create players !
-         players = ui.getPlayers();
+        try {
+            players = DatabaseDD.getPersons();
+            ui.display("Les joueurs récupérés dans la base de données sont :");
+            ui.display(players.toString());
+        } catch (SQLException e) {
+            ui.display("Erreur lors de la récupération des joueurs dans la base de données.");
+        }
+
+        if (players == null) {
+            System.out.println("Pas de joueurs dans la base de données. Création de nouveaux joueurs.");
+            players = ui.getPlayers();
+        } else {
+            // Ajoute aux joueurs récupérés dans la base de données les nouveaux joueurs créés manuellement
+            players.addAll(ui.getPlayers());
+        }
+//        System.exit(0);
 
         // POUR LE TEST :
         // ============
@@ -50,7 +67,7 @@ public class Game {
 
         // Create board : pass the players to the board, to set the allowed persons for each square
         this.board = new Board(BoardType.RANDOM, ui, players); // C'est ici qu'on choisit le type de plateau
-        this.boardSize =  board.getSquares().size();
+        this.boardSize = board.getSquares().size();
 
         // Play !
         ui.displayGameStart();
@@ -140,6 +157,7 @@ public class Game {
 
     private class PersonOutOfBoard extends Exception {
         public String playerName;
+
         public PersonOutOfBoard(Person player) {
             playerName = player.getName();
         }

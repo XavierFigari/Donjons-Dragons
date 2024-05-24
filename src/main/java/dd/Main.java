@@ -1,9 +1,15 @@
-package main.java.dd;
+package dd;
 
-import main.java.dd.game.Game;
+import dd.db.DatabaseDD;
+import dd.game.Game;
+
+import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+        new DatabaseDD();
+
         do {
             Game game = new Game();
             game.play();

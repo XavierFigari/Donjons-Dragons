@@ -1,10 +1,10 @@
-package main.java.dd.board.enemies;
+package dd.board.enemies;
 
-import main.java.dd.UserInterface;
-import main.java.dd.board.Square;
-import main.java.dd.persons.Enemy;
-import main.java.dd.persons.Person;
-import main.java.dd.persons.PersonIsDeadException;
+import dd.UserInterface;
+import dd.board.Square;
+import dd.persons.Enemy;
+import dd.persons.Person;
+import dd.persons.PersonIsDeadException;
 
 public class SquareEnemy extends Square {
 

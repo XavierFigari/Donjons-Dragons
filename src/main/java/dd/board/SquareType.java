@@ -1,7 +1,7 @@
-package main.java.dd.board;
+package dd.board;
 
 public enum SquareType {
-    HAMMER,
+    CLUB,
     SWORD,
     LIGHTNING,
     FIREBALL,

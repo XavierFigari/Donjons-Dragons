@@ -1,9 +1,9 @@
-package main.java.dd.persons;
+package dd.persons;
 
-import main.java.dd.Colors;
-import main.java.dd.UserInterface;
-import main.java.dd.tools.DefensiveTool;
-import main.java.dd.tools.OffensiveTool;
+import dd.Colors;
+import dd.UserInterface;
+import dd.tools.DefensiveTool;
+import dd.tools.OffensiveTool;
 
 public abstract class Person {
 
@@ -15,7 +15,7 @@ public abstract class Person {
     protected int strength;
 
     protected DefensiveTool defensiveTool; // shield (warrior) or philtre (wizard)
-    protected OffensiveTool offensiveTool; // sword, hammer (warrior) or fireball, lightning (wizard)
+    protected OffensiveTool offensiveTool; // sword, club (warrior) or fireball, lightning (wizard)
 
     protected int position;
 
@@ -23,6 +23,9 @@ public abstract class Person {
     // --------------------------------------------------------------------------
     public Person(String name) {
         this.name = name;
+        this.position = 0;
+    }
+    public Person() {
         this.position = 0;
     }
 
@@ -102,6 +105,10 @@ public abstract class Person {
         ui.display("Tu es maintenant sur la case " + this.getPosition() + ".");
     }
 
+//    public List<Person> getPersonsFromDatabase() {
+////        return this;
+//    }
+
 //    public void simpleFight(Enemy enemy, UserInterface ui) throws PersonIsDeadException {
 //        // Inform the player about the fight
 //        ui.display("- Ta force \uD83D\uDCAA = " + this.getStrength() + " points. Ta vie ❤️ = " + this.getLife() + " points.");
@@ -165,16 +172,17 @@ public abstract class Person {
     public OffensiveTool getOffensiveTool() {
         return offensiveTool;
     }
-
     public DefensiveTool getDefensiveTool() {
         return defensiveTool;
     }
 
     // Abstract methods
     public abstract String getTypeString();
+    public abstract String getType();
 
     // Setters
     // --------------------------------------------------------------------------
+
     public void setName(String name) {
         this.name = name;
     }
@@ -200,4 +208,5 @@ public abstract class Person {
         this.offensiveTool = offensiveTool;
     }
 
+//    public abstract String getOffensiveToolDatabaseName();
 }

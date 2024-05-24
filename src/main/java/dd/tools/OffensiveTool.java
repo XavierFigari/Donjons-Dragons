@@ -1,4 +1,4 @@
-package main.java.dd.tools;
+package dd.tools;
 
 public abstract class OffensiveTool {
 
@@ -6,6 +6,7 @@ public abstract class OffensiveTool {
 
     public OffensiveTool() {
     }
+    public abstract String  getOffensiveToolDatabaseName() ;
 
     // Getters
     public int getAttackLevel() {

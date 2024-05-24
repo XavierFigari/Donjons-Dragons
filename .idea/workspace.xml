@@ -5,49 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63c24f02-71cf-43e8-92d9-bcf0c920c9f5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/create_database.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dd/db/DatabaseDD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/Colors.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/Msg.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/UserInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/BoardType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/Square.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/SquareEmpty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/SquareType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/enemies/SquareDragon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/enemies/SquareEnemy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/enemies/SquareGoblin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/enemies/SquareSorcerer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/potions/SquarePotionBig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/potions/SquarePotionStd.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/tools/SquareAxe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/tools/SquareFireball.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/tools/SquareLightning.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/tools/SquareSword.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/board/tools/SquareTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/game/Dice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/game/DiceOne.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/game/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/game/NormalDice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Dragon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Enemy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Goblin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/PersonIsDeadException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/PlayerType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Sorcerer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Warrior.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/persons/Wizard.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/Axe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/DefensiveTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/Fireball.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/Lightning.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/OffensiveTool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/Philtre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/Shield.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DD/tools/Sword.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/Colors.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/Msg.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/UserInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/Board$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/BoardSize.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/BoardType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/Square.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/SquareEmpty.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/SquareType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/enemies/SquareDragon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/enemies/SquareEnemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/enemies/SquareGoblin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/enemies/SquareSorcerer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/potions/SquarePotionBig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/potions/SquarePotionStd.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/tools/SquareAxe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/tools/SquareFireball.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/tools/SquareLightning.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/tools/SquareSword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/board/tools/SquareTool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/game/Dice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/game/DiceOne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/game/Game$PersonOutOfBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/game/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/game/NormalDice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Dragon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Enemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Goblin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Hero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/PersonIsDeadException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/PlayerType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Sorcerer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Warrior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/persons/Wizard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/Axe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/DefensiveTool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/Fireball.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/Lightning.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/OffensiveTool.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/Philtre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/Shield.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DD/main/java/dd/tools/Sword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/Colors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/Msg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/Msg.java" afterDir="false" />
@@ -75,6 +83,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Dragon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/Goblin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Goblin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/PersonIsDeadException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/PersonIsDeadException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dd/persons/PlayerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dd/persons/PlayerType.java" afterDir="false" />
@@ -117,44 +126,43 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.DD.executor": "Run",
+    "Application.DD.executor": "Debug",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "bdd",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/xavier/campus/12.Java/DD-Maven/src/main/java/campus",
+    "last_opened_file_path": "/home/xavier/campus/12.Java/DD-Maven/src/main/java/dd/game",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="main.java.dd.db" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/dd/game" />
       <recent name="$PROJECT_DIR$/src/main/java/campus" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="dd.game2" />
     </key>
   </component>
   <component name="RunManager">
     <configuration name="DD" type="Application" factoryName="Application" focusToolWindowBeforeRun="true">
-      <option name="MAIN_CLASS_NAME" value="main.java.dd.Main" />
-      <module name="DD" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+      <option name="MAIN_CLASS_NAME" value="dd.Main" />
       <module name="DD-Maven" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="DD-Maven" />
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -177,7 +185,10 @@
       <option name="presentableId" value="Default" />
       <updated>1716372031514</updated>
       <workItem from="1716372032604" duration="1898000" />
-      <workItem from="1716380305531" duration="2630000" />
+      <workItem from="1716380305531" duration="8617000" />
+      <workItem from="1716388954641" duration="607000" />
+      <workItem from="1716447951821" duration="23004000" />
+      <workItem from="1716535045523" duration="7857000" />
     </task>
     <servers />
   </component>
@@ -194,5 +205,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dd/db/DatabaseDD.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

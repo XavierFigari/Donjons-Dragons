@@ -1,4 +1,4 @@
-package main.java.dd.tools;
+package dd.tools;
 
 public class Shield extends DefensiveTool {
     public Shield() {

@@ -1,8 +1,8 @@
-package main.java.dd.persons;
+package dd.persons;
 
-import main.java.dd.tools.Axe;
-import main.java.dd.tools.Shield;
-import main.java.dd.tools.Sword;
+import dd.tools.Axe;
+import dd.tools.Shield;
+import dd.tools.Sword;
 
 import java.util.Random;
 
@@ -38,6 +38,10 @@ public class Warrior extends Hero {
     @Override
     public String getTypeString() {
         return "Guerrier \uD83E\uDD77";
+    }
+    
+    public String getType() {
+        return "Warrior";
     }
 
 //    @Override

@@ -1,4 +1,4 @@
-package main.java.dd.game;
+package dd.game;
 
 import java.util.Random;
 
