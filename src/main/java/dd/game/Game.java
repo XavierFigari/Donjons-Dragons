@@ -50,10 +50,10 @@ public class Game {
 
         if (players == null) {
             System.out.println("Pas de joueurs dans la base de données. Création de nouveaux joueurs.");
-            players = ui.getPlayers();
+            players = ui.getPlayers(players);
         } else {
             // Ajoute aux joueurs récupérés dans la base de données les nouveaux joueurs créés manuellement
-            players.addAll(ui.getPlayers());
+            players.addAll(ui.getPlayers(players));
         }
 //        System.exit(0);
 

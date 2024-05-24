@@ -161,9 +161,9 @@ public class UserInterface {
      *
      * @return List of <Person>, after the user chooses "J" (Jouer)
      */
-    public List<Person> getPlayers() {
-        String answer;
-        List<Person> players = new ArrayList<Person>();
+    public List<Person> getPlayers(List<Person> players) {
+        String answer, answer2;
+//        List<Person> players = new ArrayList<Person>();
 
         do {
             displayMainMenu();
@@ -187,12 +187,38 @@ public class UserInterface {
                     break;
                 case "M": // Modify player
                     if (players.isEmpty()) {
-                        Msg.printRed("\nVous ne pouvez pas modifier un joueur tant que " +
-                                "vous n'en avez pas créé !\n");
+                        Msg.printRed("\nVous ne pouvez pas modifier un joueur " +
+                                "tant que vous n'en avez pas créé !\n");
                         break;
                     }
+
+                    try {
+                        players = DatabaseDD.getPersons();
+                        display("Les joueurs récupérés dans la base de données sont :");
+                        display(players.toString());
+                    } catch (SQLException e) {
+                        display("Erreur lors de la récupération des joueurs dans la base de données.");
+                    }
+
+                    answer2 = sc.nextLine();
+
+//
+//                    ICI CREER UN CODE QUI VA AFFICHER LES JOUEURS ET DEMANDER LEQUEL MODIFIER EN FONCTION
+//                        DE SON ID DANS LA BASE DE DONNEES
+//                        IL VA FALLOIR DU COUP STOCKER L'ID DANS LA CLASSE PERSON
+
+                    Person lastPlayer = players.getLast();
+                    Person modifiedPlayer = getPlayer();
                     players.removeLast();
-                    players.add(getPlayer());
+                    players.add(modifiedPlayer);
+                    // update in database
+                    try {
+                        DatabaseDD.updatePerson(modifiedPlayer);
+                        display("Joueur modifié dans la base de données.");
+                    } catch (SQLException e) {
+                        display(e.toString());
+                        display("Erreur lors de la modification du joueur dans la base de données.");
+                    }
                     displayPlayer(players.getLast());
                     break;
                 case "J": // Start Game

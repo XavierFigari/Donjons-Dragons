@@ -38,7 +38,18 @@ public class DatabaseDD {
         ps.executeUpdate();
     }
 
-
+    // =============================================================
+    // Méthode : updatePerson
+    // =============================================================
+    public static void updatePerson(Person person) throws SQLException {
+        String query = "update dd.heroes set life = ?, strength = ?, weapon = ? where name = ?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setInt(1, person.getLife());
+        ps.setInt(2, person.getStrength());
+        ps.setString(3, person.getOffensiveTool().getOffensiveToolDatabaseName());
+        ps.setString(4, person.getName());
+        ps.executeUpdate();
+    }
 
     // =============================================================
     // Méthode : getPersons

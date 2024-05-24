@@ -1,21 +1,6 @@
 ```mermaid
 classDiagram
 
-    class Menu {
-        +displayGameStart() : void
-        +displayTurnNumber()
-        +playerMenu(List<Person> players)
-    }
-
-    class Game {
-        -final Menu menu
-        -final Board board
-        +Game(Menu menu)
-        +play(List<Person> players) : void
-        -gameTurn(List<Person> players, int turnCount) : boolean
-        -throwDice() : int
-    }
-
     class Person {
         <<abstract>>
         -String name
@@ -48,40 +33,117 @@ classDiagram
         +getAttackLevel() : int
     }
 
-    class Weapon {
-        +Weapon(int attackLevel, String name)
-        +Weapon()
+    class UserInterface {
+        +getPlayers(List<Person> players) : List<Person>
+        +printBox(String color, String text) : void
+        +displayWinner(String playerName) : void
+        +askToThrowDice() : void
+        +getFleeMove() : int
     }
 
-    class Spell {
-        +Spell(int attackLevel, String name)
+    class Game {
+        -final UserInterface userInterface
+        -final Board board
+        +Game(UserInterface userInterface)
+        +play(List<Person> players) : void
+        -gameTurn(List<Person> players, int turnCount) : boolean
+        -throwDice() : int
     }
 
-    class DefensiveTool {
+   class Axe {
+        +Axe(int attackLevel, String name)
+    }
+
+    class Fireball {
+        +Fireball(int attackLevel, String name)
+    }
+
+    class Lightning {
+        +Lightning(int attackLevel, String name)
+    }
+
+    class Sword {
+        +Sword(int attackLevel, String name)
+    }
+
+     class Board {
+        -List<Square> squares
+        +Board(BoardType boardType, UserInterface ui, List<Person> players)
+        +getSquares() : List<Square>
+        +getSquare(int position) : Square
+    }
+
+    direction LR
+    class Square {
         <<abstract>>
-        -int defenseLevel
-        +DefensiveTool()
-        +getDefenseLevel() : int
+        +Square()
     }
 
-    class Shield {
-        +Shield(int defenseLevel, String name)
-        +Shield()
+    class SquareEmpty {
+        +SquareEmpty(UserInterface ui)
     }
 
-    class Philtre {
-        +Philtre(int defenseLevel, String name)
+    class SquareDragon {
+        +SquareDragon(UserInterface ui)
     }
 
-    Game --> Menu : Uses
+    class SquareGoblin {
+        +SquareGoblin(UserInterface ui)
+    }
+
+    class SquareSorcerer {
+        +SquareSorcerer(UserInterface ui)
+    }
+
+    class SquarePotionStd {
+        +SquarePotionStd(UserInterface ui)
+    }
+
+    class SquarePotionBig {
+        +SquarePotionBig(UserInterface ui)
+    }
+
+    class SquareFireball {
+        +SquareFireball(UserInterface ui, List<Wizard> wizards)
+    }
+
+    class SquareLightning {
+        +SquareLightning(UserInterface ui, List<Wizard> wizards)
+    }
+
+    class SquareAxe {
+        +SquareAxe(UserInterface ui, List<Warrior> warriors)
+    }
+
+    class SquareSword {
+        +SquareSword(UserInterface ui, List<Warrior> warriors)
+    }
+
+    Board --> Square : Contains
+    Square ..|> SquareEmpty
+    Square ..|> SquareDragon
+    Square ..|> SquareGoblin
+    Square ..|> SquareSorcerer
+    Square ..|> SquarePotionStd
+    Square ..|> SquarePotionBig
+    Square ..|> SquareFireball
+    Square ..|> SquareLightning
+    Square ..|> SquareAxe
+    Square ..|> SquareSword
+
+
+
+    Game --> Board : Uses
     Game --> Person : Uses
     Person <|-- Warrior
     Person <|-- Wizard
-    Warrior --> Weapon : Uses
-    Warrior --> Shield : Uses
-    Wizard --> Spell : Uses
-    Wizard --> Philtre : Uses
-    Weapon <|-- OffensiveTool
-    Spell <|-- OffensiveTool
-    Shield <|-- DefensiveTool
-    Philtre <|-- DefensiveTool
+    Warrior --> Axe : Uses
+    Warrior --> Sword : Uses
+    Wizard --> Fireball : Uses
+    Wizard --> Lightning : Uses
+    Axe <|-- OffensiveTool
+    Fireball <|-- OffensiveTool
+    Lightning <|-- OffensiveTool
+    Sword <|-- OffensiveTool
+    Game --> UserInterface : Uses
+    
