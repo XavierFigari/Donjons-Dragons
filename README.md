@@ -13,6 +13,11 @@ This project is a Java application with a text console interface. It includes a 
 2. **Game Loop**: Inside the `main` method, a `do-while` loop continuously creates a new `Game` object and calls its `play` method.
 3. **Game Logic**: The `play` method in the `Game` class contains the core game logic.
 
+## Class diagram
+The class diagram can be found in the `docs` folder, in Mermaid format : [Class Diagram](docs/DD_classes.md).
+
+To see it in your IDE, you can use the [Mermaid plugin](https://plugins.jetbrains.com/plugin/10954-mermaid-diagrams) for Jetbrains, for example.
+
 ## Play logic
 
 The `play` method in the `Game` class is responsible for managing the main game loop and handling the core game logic. Here is a detailed breakdown of what the `play` method does:
